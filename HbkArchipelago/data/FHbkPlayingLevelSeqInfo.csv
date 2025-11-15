@@ -1,0 +1,140 @@
+LevelSeqName,IsCutsceneSequence,Description
+am0100_00,true,Intro - (2D) Chai walking through Vandelay campus
+am0200_00,true,Track 2 - Rail explodes while Chai is riding it
+am0300_00,true,Track 3 - Chai gets punched really hard
+am1000_00,true,Track 10 - Chai bounces off the blimp
+am1400_00,true,Credits
+cs0102_00,true,Intro - (3D) Chai gets Armstrong pass
+cs0104_00,true,Track 1 - Chai wakes up after medical procedure
+cs0106_00,true,Track 1 - Chai gets his clothes back and goes outside
+cs0110_00,true,Track 1 - Chai inspects himself after first fight
+cs0115_00,true,Track 1 - After light and heavy attack tutorial
+cs0120_00,true,Track 1 - Find 808 for the first time
+cs0125_00,true,Track 1 - Meet 808 and start Beat Hit tutorial
+cs0135_00,true,Track 1 - Peppermint tells Chai how to get out through the QA Center
+cs0140_00,true,Track 1 - Chai falls off of tower into 2D section
+cs0150_00,true,Track 1 - First fight with ranged enemies
+cs0160_00,true,Track 1 - Meet Rekka and start QA-1MIL boss fight
+cs0165_00,true,Track 1 - QA-1MIL activates his rocket launchers
+cs0170_00,true,Track 1 - QA-1MIL gets serious
+cs0180_00,true,Track 1 - QA-1MIL defeated
+cs0185_00,true,Track 1 - Chai flies into and smashes "Days Without Defects" sign
+cs0205_00,true,Track 1 - 808 leads Chai to the hideout
+cs0210_00,true,Track 2 - Chai and 808 emerge from underground
+cs0220_00,true,Track 2 - Chai magnet grabs a high speed rail for the first time
+cs0225_00,true,Track 2 - Chai breaks through a glass window after flying off a rail
+cs0230_00,true,Track 2 - Enter Rekka's office
+cs0235_00,true,Track 2 - Rekka phase 2
+cs0240_00,true,Track 2 - Rekka phase 3
+cs0245_00,true,Track 2 - Rekka defeated
+cs0250_00,true,Track 2 - Vandelay meeting after Rekka is gone
+cs0310_00,true,Track 3 - Chai and Zanzo meet in person for the first time
+cs0315_00,true,Track 3 - Chai attempts to reason with the enemy
+cs0320_00,true,Track 3 - Chai falls through the ceiling of Macaron's lab
+cs0415_00,true,Track 4 - Chai returns to the Z-Shielding enemy
+cs0420_00,true,Track 4 - Final AR simulation destroyed and Zanzo defunded
+cs0425_00,true,Track 4 - Kale interrupts Peppermint looking at info on SPECTRA
+cs0430_00,true,Track 4 - Chai escapes the robots but then gets captured by Korsica
+cs0501_00,true,Track 5 - Chai wakes up in Korsica's cell
+cs0503_00,true,Track 5 - 808 helps Chai break out of the cell
+cs0505_00,true,Track 5 - Chai stubs his toe
+cs0510_00,true,Track 5 - TEC-78 thinks Chai is here to fix the security system
+cs0550_00,true,Track 6 - Chai gets ambushed at the lift
+cs0551_00,true,Track 6 - Enemies catch up to Chai on the lift
+cs0552_00,true,Track 6 - ?
+cs0553_00,true,Track 6 - Long ranged reinforcements
+cs0554_00,true,Track 6 - Korsica activates the brakes
+cs0555_00,true,Track 6 - Chai crashes into security wing 2
+cs0605_00,true,Track 7 - Chai sneaks through construction into a trap
+cs0615_00,true,Track 7 - Korsica turns on a lot of lasers
+cs0620_00,true,Track 7 - Chai falls out of the vent and into Korsica's office
+cs0625_00,true,Track 7 - Chai carries Korsica out of her office
+cs0630_00,true,Track 7 - Robot Kale attacks Chai and Korsica
+cs0725_00,true,Track 8 - Peppermint reveals that Kale is her brother
+cs0805_00,true,Track 9 - Intro
+cs0810_00,true,Track 9 - Chai puts on the shark costume
+cs0815_00,true,Track 9 - Mimosa does her intro on stage
+cs0820_00,true,Track 9 - Chai jumps up to the stage and confronts Mimosa
+cs0825_00,true,Track 9 - Mimosa phase 2
+cs0830_00,true,Track 9 - Mimosa phase 3
+cs0835_00,true,Track 9 - Mimosa phase 4
+cs0840_00,true,Track 9 - Mimosa defeated
+cs0845_00,true,Track 9 - Escaping with Mimosa's key
+cs1005_00,true,Track 10 - Intro
+cs1010_00,true,Track 10 - Chai gets into the cannon
+cs1015_00,true,Track 10 - Chai lands in the Vandelay cafeteria
+cs1020_00,true,Track 10 - Korsica flings Chai up to the samurai chef
+cs1025_00,true,Track 10 - Roquefort transforms
+cs1030_00,true,Track 10 - Roquefort phase 2
+cs1035_00,true,Track 10 - Roquefort phase 3
+cs1040_00,true,Track 10 - Roquefort defeated
+cs1105_00,true,Track 11 - Meet brainwashed Roxanne in her office
+cs1110_00,true,Track 11 - Chai slams his scrap guitar against the forcefield
+cs1115_00,true,Track 11 - Chai decides to try synchronizing with the forcefield
+cs1120_00,true,Track 11 - Chai breaks through the forcefield
+cs1125_00,true,Track 11 - The team rushes to help CNMN with the giant hand
+cs1130_00,true,Track 11 - CNMN blasts the giant robot
+cs1205_00,true,Track 12 - Kale takes off his coat and controls Chai's mind
+cs1210_00,true,Track 12 - 808 saves Chai and they fight Kale on the roof
+cs1215_00,true,Track 12 - Kale phase 2
+cs1220_00,true,Track 12 - Kale phase 3
+es1250_80,true,Track 12 - Kale defeated
+cs1225_00,true,Track 12 - Kale explodes
+cs1305_00,true,Track 12 - Shutting down SPECTRA
+cs1310_00,true,Track 12 - Meeting Roxanne after SPECTRA
+ev0003_80,false,Main Menu - Title screen move to hideout
+ev0006_80,false,Main Menu - Main menu to options
+ev0007_80,false,Main Menu - Options back to main menu
+ev0009_80,false,Main Menu - Main menu to new game
+ev0010_80,false,Main Menu - New game back to main menu
+ev0012_80,false,Main Menu - Start new game
+ev0015_80,false,Main Menu - Main menu to continue
+ev0016_80,false,Main Menu - Continue back to main menu
+ev0220_80,true,Track 2 - ES-101 introduction
+ev0240_80,true,Track 2 - Flying enemy introduction
+ev0310_80,true,Track 3 - Intro
+ev0340_80,true,Track 3 - BES-102 introduction
+ev0360_80,true,Track 3 - Shield enemy introduction
+ev0370_80,true,Track 3 - BRUT-1L introduction
+ev0380_80,true,Track 3 - Z-Shielding introduction
+ev0410_80,true,Track 4 - Intro
+ev0430_80,false,Track 4 - Giant Zanzo flicks away the gift basket
+ev0435_80,true,Track 4 - Chai grabs a rail after breaking out of Zanzo's lab
+ev0440_80,true,Track 4 - Chai lands from the rail and Korsica sends robots to capture him
+ev0445_80,true,Track 4 - Chai gets boxed in by electrified walls
+ev0450_80,true,Track 4 - Korsica activates the electrified wall
+ev0470_80,true,Track 4 - Chai lands on a hatch that opens while he is standing on it
+ev0480_80,true,Track 4 - Sword and shield enemy introduction
+ev0540_80,true,Track 5 - Eagle enemy introduction
+ev0605_80,true,Track 7 - Breaking through wall
+ev0615_80,true,Track 7 - Claw enemy introduction
+ev0630_80,true,Track 7 - Korsica hits Chai with wind
+ev0635_80,true,Track 7 - Korsica begins to doubt Kale before getting mad
+ev0710_80,true,Track 8 - Intro
+ev0720_80,true,Track 8 - BL-1Z5 introduction
+ev0740_80,true,Track 8 - SBR-CUR introduction
+ev0760_80,true,Track 8 - GNR-FLO introduction
+ev0780_80,true,Track 8 - Enemies fall through the museum ceiling
+ev0820_80,true,Track 9 - Chai breaks through the backstage glass
+ev0850_80,true,Track 9 - Chai moving around under the stage
+ev1010_80,true,Track 10 - Enemy interferes with CNMN calibrating the cannon
+ev1020_80,true,Track 10 - Shield enemy introduction
+ev1030_80,true,Track 10 - Flying enemy knocks Chai off platform
+ev1040_80,true,Track 10 - Flying enemy grabs Chai
+ev1045_80,true,Track 10 - Flying enemy launched into Kale statue
+ev1120_80,true,Track 11 - Enemy destroys the elevator panel that Kale used
+ev1125_90,true,Track 11 - Zanzo's giant robot appears
+ev1130_70,true,Track 11 - Chai accidentally flings himself into a shipping container
+ev1150_70,true,Track 11 - Chai is cornered but his friends help him out
+ev1160_80,true,Track 11 - Chai gets punched by the giant robot
+ev1170_70,true,Track 11 - Macaron holds the giant robot's arm steady
+ev1180_70,true,Track 11 - Chai slices through the giant robot's arm
+ev1190_80,true,Track 11 - Rhythm minigame against giant robot
+ev2000_00,false,Battle - Chai tosses his guitar and catches it
+ev2000_05,false,Battle - Chai tosses 808 into the air off the end of his guitar
+ev5000_81_csev,false,Track 9 - Rhythm game vs Mimosa
+ev8110_01,true,Track 1 - Activate elevator and fly into the air in front of QA Center
+mc0600_00,true,Track 7 - Plan to go up to Korsica's office
+mc0800_00,true,Track 9 - Plan to defeat Mimosa
+qt0175_00,false,Track 1 - Hit QA-1MIL's right hand back at himself
+qt0175_01,false,Track 1 - Hit QA-1MIL's left hand back at himself

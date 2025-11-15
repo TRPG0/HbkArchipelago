@@ -1,0 +1,6 @@
+HbkArchipelago/lua-apclientpp.lua
+HbkArchipelago/save/*
+package/
+__pycache__
+*.py
+!apworld/*.py

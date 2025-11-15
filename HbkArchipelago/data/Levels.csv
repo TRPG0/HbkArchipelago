@@ -1,0 +1,15 @@
+Level,GetFullName
+Title,Level /Game/Hibiki/Maps/Title/Title_All.Title_All:PersistentLevel
+Hideout,Level /Game/Hibiki/Maps/HideOut/HideOut_Main.HideOut_Main:PersistentLevel
+Track 1,Level /Game/Hibiki/Maps/St01/St01_All.St01_All:PersistentLevel
+Track 2,Level /Game/Hibiki/Maps/St02/ST02_All.ST02_All:PersistentLevel
+Track 3,Level /Game/Hibiki/Maps/St03/St03_All.St03_All:PersistentLevel
+Track 4,Level /Game/Hibiki/Maps/St04/St04_All.St04_All:PersistentLevel
+Track 5,Level /Game/Hibiki/Maps/St05/St05a_All.St05a_All:PersistentLevel
+Track 6,Level /Game/Hibiki/Maps/St05b/St05b_All.St05b_All:PersistentLevel
+Track 7,Level /Game/Hibiki/Maps/St06/St06_All.St06_All:PersistentLevel
+Track 8,Level /Game/Hibiki/Maps/St07/St07_All.St07_All:PersistentLevel
+Track 9,Level /Game/Hibiki/Maps/St08/St08_All.St08_All:PersistentLevel
+Track 10,Level /Game/Hibiki/Maps/St10/St10_All.St10_All:PersistentLevel
+Track 11,Level /Game/Hibiki/Maps/St11/St11_All.St11_All:PersistentLevel
+Track 12,Level /Game/Hibiki/Maps/St12/St12_All.St12_All:PersistentLevel
