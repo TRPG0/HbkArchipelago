@@ -17,8 +17,20 @@ SaveData:SetModVersion(HbkModVersion)
 ---@type table<string, integer>
 LocationIdTable = {}
 
+HbkMainExecutableDirectory = nil
 do
-    local path = IterateGameDirectories().Game.Binaries.Win64.ue4ss.Mods.HbkArchipelago.data.__absolute_path .. "\\hbk_loc.json"
+    local Directories = IterateGameDirectories()
+    if Directories.Game.Binaries.Win64 then
+        print("Game is Steam version\n")
+        HbkMainExecutableDirectory = Directories.Game.Binaries.Win64
+    else
+        print("Game is Xbox version\n")
+        HbkMainExecutableDirectory = Directories.Game.Binaries.WinGDK
+    end
+end
+
+do
+    local path = HbkMainExecutableDirectory.ue4ss.Mods.HbkArchipelago.data.__absolute_path .. "\\hbk_loc.json"
     local file = io.open(path, "r")
     if file then
         local decode, pos, err = dkjson.decode(file:read("a"), 1, nil)
