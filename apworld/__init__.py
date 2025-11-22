@@ -32,8 +32,8 @@ class HiFiRushWorld(World):
     location_name_to_id = {location.name: index+1 for index, location in enumerate(location_list)}
 
     #item_name_groups = 
-    #options_dataclass = HbkOptions
-    #options: HbkOptions
+    options_dataclass = HbkOptions
+    options: HbkOptions
 
 
     def __init__(self, multiworld, player):

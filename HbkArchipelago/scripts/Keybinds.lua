@@ -32,7 +32,7 @@ RegisterKeyBind(Key.FOUR, { ModifierKey.CONTROL }, function ()
     ---@type UHbkInventoryManager | UObject
     local InventoryManager = FindFirstOf("HbkInventoryManager")
 
-    if InventoryManager:IsValid() then
+    if InventoryManager:IsValid() and SaveData.IsCurrentFileRandomized then
         InventoryManager:OpenCostumeAll()
         print("Unlocked all cosmetics!\n")
     end

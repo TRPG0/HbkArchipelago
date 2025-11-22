@@ -46,6 +46,7 @@ After connecting to a server, the address, player name, and password will be sav
 
 ## Important info / Known issues
 
+- The Xbox Game Pass version of Hi-Fi RUSH has not been tested very thoroughly. Hopefully everything works.
 - At the beginning, only Track 1 is playable. Other tracks must be unlocked by finding "Unlock Next Track" items, except for Track 12 which is unlocked by completing all of the previous tracks.
 - The stage select menu will very quickly scroll past any tracks you do not have unlocked.
 - Depending on how quickly you gain access to new tracks, it may be possible to play tracks out of their regular order. This has not been tested thoroughly so do it at your own risk.
@@ -55,6 +56,50 @@ After connecting to a server, the address, player name, and password will be sav
 - Store locations are checked when the store menu is closed.
 - Technically, there's nothing preventing you from selling things in the store after getting a location check from them.
 - The combo list in the pause menu will be inaccurate most of the time.
-- If you skip the Beat Hit tutorial in Track 1, the floating 808 will never appear.
+- If you skip the Beat Hit tutorial in Track 1, the floating 808 next to Chai will never appear.
 - If you skip the Parry tutorial in Track 3, the Parry ability is never given to the player.
 - Purchasing Magnet Backstab, Air Parry, or Directional Parry in the store will both count as a location check and also give you the corresponding ability.
+- If you don't want to wait until you would normally unlock Beat Hit, you can press `Ctrl + THREE` to unlock it at any time. 
+- You can press `Ctrl + FOUR` to unlock all cosmetics.
+- You can press `ZERO` to skip the current line of dialogue. This works fine in most conversations, but if you do this and get softlocked, it can usually be fixed by returning to the Hideout and continuing from the last checkpoint.
+
+## Chai's Attacks
+
+Since the in game combo list will not work properly while the game is randomized, here is a list of all of Chai's attacks and how to perform them:
+
+- **Humbucker** (default): XXXX
+- **Grandslam** (default): YYY
+- **Breakdown** (default): XYY
+- **Tremolo** (default): YXX
+- **Air Countdown** (default): (In air) XXXX
+- **Hammer-On** (default): (In air) Y
+- **Dash Attack** (default): Dash -> X
+- **Air Launch** (default): Dash -> Y
+- **Rise Up** (default): X-XX
+- **Echo Splash**: XYXXX
+- **Tune Up**: XX-XXX
+- **Stomp Box**: YXY
+- **Arpeggio Stab**: XXYYY
+- **Pickup Crash**: YYXX
+- **Harmonic Beam**: (In air) XYYY
+- **Compressor Slam**: (In air) XYXY
+- **Shred**: X (mash) Y
+- **Staccato Launch**: X (hold)
+- **Gain Tornado**: Y (hold)
+- **Quick Beat Hit**: A+X
+- **Steal Counter**: Y+B
+- **Magnet Backstab**: LB (when reaching enemy with magnet)
+- **Air Parry**: B
+- **Directional Parry**: LS+B
+- **Switch Kicker**: Peppermint Ground Jam Combo
+- **Master Blaster**: Peppermint Air Jam Combo
+- **Cannon Spike**: Peppermint Charge
+- **Kick Shot**: Peppermint Counter
+- **Double Bass Drop**: Macaron Ground Jam Combo
+- **High Strung**: Macaron Air Jam Combo
+- **Gravity Well**: Macaron Charge
+- **Love Tap**: Macaron Counter
+- **High Security Risk**: Korsica Ground Jam Combo
+- **Tornado Lift**: Korsica Air Jam Combo
+- **Korsica Typhoon**: Korsica Charge
+- **High Alert**: Korsica Counter
