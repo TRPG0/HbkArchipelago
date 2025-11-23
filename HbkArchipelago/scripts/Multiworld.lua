@@ -128,7 +128,7 @@ function Multiworld:CheckLocation(Location)
         Util.AddToTableIfNotHas(SaveData.Checked, Location)
         print("Checking location " .. Location .. " | " .. tostring(LocationIdTable[Location]) ..  "\n")
     else
-        print("No ID found for location " .. Location .. "\n")
+        print("No ID found for location \"" .. Location .. "\"\n")
     end
 end
 

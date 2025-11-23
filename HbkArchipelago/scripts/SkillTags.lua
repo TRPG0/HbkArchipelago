@@ -182,7 +182,7 @@ SkillTags.Combo_XXXX = {
 --Arpeggio Stab
 ---@type HbkPlayerStateInfoTags
 SkillTags.Combo_XXYYY = {
-    GameplayTag = {TagName = FName("Player.Skill.Combo.XYXXX")},
+    GameplayTag = {TagName = FName("Player.Skill.Combo.XXYYY")},
     ParentTags = {
         {TagName = FName("Player")},
         {TagName = FName("Player.Skill")},

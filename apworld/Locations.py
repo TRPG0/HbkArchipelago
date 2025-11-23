@@ -20,6 +20,7 @@ class HbkLocationType(Enum):
     Partner = 13
     SubMission = 14
     TrackComplete = 15
+    NPCItem = 16
 
 
 @dataclass
@@ -147,7 +148,7 @@ location_list: List[HbkLocation] = [
     HbkLocation("Store - Chips: Korsica Stun Extend Lv.3", Regions.s, HbkLocationType.Chip, ""),
     HbkLocation("Store - Chips: Chip Sense", Regions.s, HbkLocationType.Chip, ""),
 
-    HbkLocation("Track 1: Broken Armstrong Circuit #1", Regions.t1, HbkLocationType.Collectible, ""),
+    HbkLocation("Track 1: Item from SEB-AAA", Regions.t1, HbkLocationType.NPCItem, ""),
     HbkLocation("Track 1: Life Gauge Piece #1", Regions.t1, HbkLocationType.Collectible, "St01/LifeCoreItem_BP1"),
     HbkLocation("Track 1: VLog \"TO ALL EMPLOYEES!\"", Regions.t1, HbkLocationType.VLog, "Inventory.File.VLog.0000"),
     HbkLocation("Track 1: Life Gauge Piece #2", Regions.t1, HbkLocationType.Collectible, "St01/LifeCoreItem_BP2"),
@@ -157,10 +158,10 @@ location_list: List[HbkLocation] = [
     HbkLocation("Track 1: Broken Piece of a Health Tank", Regions.t1, HbkLocationType.Collectible, "St01/np0600_BP1"),
     HbkLocation("Track 1: Electric Reverb Core Piece", Regions.t1, HbkLocationType.Collectible, "St01/ReverbPieceItem_BP_2"),
     HbkLocation("Track 1: Graffiti #1 (Tower)", Regions.t1, HbkLocationType.Graffiti, ""),
-    HbkLocation("Track 1: Broken Armstrong Circuit #2", Regions.t1, HbkLocationType.Collectible, "St01/np0600_BP2_2"),
+    HbkLocation("Track 1: Broken Armstrong Circuit #1", Regions.t1, HbkLocationType.Collectible, "St01/np0600_BP2_2"),
     HbkLocation("Track 1: VLog \"RE:RE:RE:RE:RE:RE:RE: Get on this!\"", Regions.t1, HbkLocationType.VLog, "Inventory.File.VLog.0030"),
     HbkLocation("Track 1: VLog \"O5-KAR Unit Musings\"", Regions.t1, HbkLocationType.VLog, "Inventory.File.VLog.0040"),
-    HbkLocation("Track 1: Broken Armstrong Circuit #3", Regions.t1, HbkLocationType.Collectible, "St01/CircuitItem_BP1"),
+    HbkLocation("Track 1: Broken Armstrong Circuit #2", Regions.t1, HbkLocationType.Collectible, "St01/CircuitItem_BP1"),
     HbkLocation("Track 1: Graffiti #2 (Crane)", Regions.t1, HbkLocationType.Graffiti, ""),
     HbkLocation("Track 1: Life Gauge Piece #3", Regions.t1, HbkLocationType.Collectible, "St01/LifeCoreItem_BP3_2"),
     HbkLocation("Track 1: Completed", Regions.t1, HbkLocationType.TrackComplete, "cs0180_00"),
@@ -325,13 +326,13 @@ location_list: List[HbkLocation] = [
     HbkLocation("Track 8: VLog \"SEN-C0 Display\"", Regions.t8, HbkLocationType.VLog, "Inventory.File.VLog.0550"),
     HbkLocation("Track 8: Graffiti #3 (Stage)", Regions.t8, HbkLocationType.Graffiti, ""),
     HbkLocation("Track 8: Broken Armstrong Circuit #4", Regions.t8, HbkLocationType.Collectible, "St07/CircuitItem_BP4"),
-    HbkLocation("Track 8: Broken Armstrong Circuit #5", Regions.t8, HbkLocationType.Collectible, "St07/CircuitItem_BP4"),
+    HbkLocation("Track 8: Broken Armstrong Circuit #5", Regions.t8, HbkLocationType.Collectible, "St07/CircuitItem_BP5"),
     HbkLocation("Track 8: Life Gauge Piece #1", Regions.t8, HbkLocationType.Collectible, "St07/LifeCoreItem_BP2"),
     HbkLocation("Track 8: VLog \"Disappointed O5-KAR\"", Regions.t8, HbkLocationType.VLog, "Inventory.File.VLog.0560"),
     HbkLocation("Track 8: Broken Piece of a Health Tank #2", Regions.t8, HbkLocationType.Collectible, "St07/LifeTankPieceItem_BP2"),
     HbkLocation("Track 8: VLog \"Water Generator Complaint\"", Regions.t8, HbkLocationType.VLog, "Inventory.File.VLog.0570"),
     HbkLocation("Track 8: Electric Reverb Core Piece #2", Regions.t8, HbkLocationType.Collectible, "St07/ReverbPieceItem_BP2"),
-    HbkLocation("Track 8: Broken Armstrong Circuit #6", Regions.t8, HbkLocationType.Collectible, "St07/CircuitItem_BP5"),
+    HbkLocation("Track 8: Broken Armstrong Circuit #6", Regions.t8, HbkLocationType.Collectible, "St07/CircuitItem_BP6"),
     HbkLocation("Track 8: VLog \"Display Complaints\"", Regions.t8, HbkLocationType.VLog, "Inventory.File.VLog.0580"),
     HbkLocation("Track 8: Broken Armstrong Circuit #7", Regions.t8, HbkLocationType.Collectible, "St07/CircuitItem_BP7_0"),
     HbkLocation("Track 8: Life Gauge Piece #2", Regions.t8, HbkLocationType.Collectible, "St07/LifeCoreItem_BP3"),

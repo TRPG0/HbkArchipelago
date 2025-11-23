@@ -1,5 +1,5 @@
 ---@type string
-HbkModVersion = "0.1.0"
+HbkModVersion = "0.1.1"
 print("HbkArchipelago " .. HbkModVersion .. "\n")
 
 print("Registering console commands\n")

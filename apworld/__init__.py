@@ -46,7 +46,8 @@ class HiFiRushWorld(World):
             HbkLocationType.StoreItem,
             HbkLocationType.SPECTRA,
             HbkLocationType.SpecialAttack,
-            HbkLocationType.SubMission
+            HbkLocationType.SubMission,
+            HbkLocationType.NPCItem
         ]
 
 
@@ -123,11 +124,11 @@ class HiFiRushWorld(World):
 
     def fill_slot_data(self):
         slot_data: Dict[str, Any] = {
-            "Version": "0.1.0",
+            "Version": "0.1.1",
             "ServerVersion": Utils.__version__
         }
 
-        #self.export_location_json()
+        self.export_location_json()
 
         return slot_data
 

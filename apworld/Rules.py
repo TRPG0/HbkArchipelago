@@ -179,19 +179,19 @@ class HbkRules:
             "Store - Attacks: High Alert":
                 korsica,
 
-            "Track 1: Broken Armstrong Circuit #1":
-                lambda state: (
-                    magnet(state)
-                    and peppermint(state)
-                ),
+            #"Track 1: Item from SEB-AAA":
+            #    lambda state: (
+            #        magnet(state)
+            #        and peppermint(state)
+            #    ),
 
-            "Track 1: Broken Armstrong Circuit #2":
+            "Track 1: Broken Armstrong Circuit #1":
                 lambda state: (
                     macaron(state)
                     and korsica(state)
                 ),
 
-            "Track 1: Broken Armstrong Circuit #3":
+            "Track 1: Broken Armstrong Circuit #2":
                 korsica,
 
             "Track 2: Broken Armstrong Circuit #1":

@@ -48,7 +48,7 @@ item_list: List[HbkItem] = [
     HbkItem("Rhythm Dodge", HbkItemType.Ability, IC.progression, 0),
     HbkItem("Special Attack", HbkItemType.Ability, IC.progression, 0),
 
-    HbkItem("Broken Armstrong Circuit", HbkItemType.Collectible, IC.filler, 53),
+    HbkItem("Broken Armstrong Circuit", HbkItemType.Collectible, IC.filler, 52),
     HbkItem("Life Gauge Piece", HbkItemType.Collectible, IC.filler, 23),
     HbkItem("Life Gauge", HbkItemType.Collectible, IC.filler, 0), #6
     HbkItem("Broken Piece of a Health Tank", HbkItemType.Collectible, IC.filler, 8),
