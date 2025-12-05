@@ -2,6 +2,28 @@
 
 A mod for connecting Hi-Fi RUSH to an Archipelago server.
 
+## Downpatching
+
+This mod **does not work** on Update 10 of Hi-Fi RUSH. If you own the Steam version of the game, you can downpatch by following these instructions:
+
+1. Right click Hi-Fi RUSH in Steam, then click Properties.
+
+2. Go to Updates, and change Automatic Updates to Wait until I launch the game.
+
+3. Open the Steam console by pressing Windows + R and typing `steam://open/console`.
+
+4. Enter the command `download_depot 1817230 1817231 2352550391294550783`. Wait until you see "Depot download complete" in the console.
+
+5. Enter the command `download_depot 1817230 1817232 2782758537428965591`. Wait until you see "Depot download complete" in the console.
+
+6. Combine the files from the `depot_1817231` and `depot_1817232` folders into a single folder.
+
+6. Right click Hi-Fi RUSH in Steam, click Manage -> Browse local files, and delete everything in that folder. Then, take the files from the depot folders and move them into the Hi-Fi RUSH folder.
+
+7. Launch the game. You will know if it was done correctly if the Bethesda logo appears at the beginning of the game instead of the Krafton logo.
+
+After completing all of these steps, you can follow the install instructions as normal.
+
 ## How to install
 
 1. Download the zip package from the releases.
