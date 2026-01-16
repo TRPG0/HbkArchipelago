@@ -1,5 +1,5 @@
 ---@type string
-HbkModVersion = "0.1.1"
+HbkModVersion = "0.1.2"
 print("HbkArchipelago " .. HbkModVersion .. "\n")
 
 print("Registering console commands\n")
@@ -30,7 +30,7 @@ do
 end
 
 do
-    local path = HbkMainExecutableDirectory.ue4ss.Mods.HbkArchipelago.data.__absolute_path .. "\\hbk_loc.json"
+    local path = HbkMainExecutableDirectory.Mods.HbkArchipelago.data.__absolute_path .. "\\hbk_loc.json"
     local file = io.open(path, "r")
     if file then
         local decode, pos, err = dkjson.decode(file:read("a"), 1, nil)

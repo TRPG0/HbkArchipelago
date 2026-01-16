@@ -124,7 +124,7 @@ class HiFiRushWorld(World):
 
     def fill_slot_data(self):
         slot_data: Dict[str, Any] = {
-            "Version": "0.1.1",
+            "Version": self.world_version.as_simple_string(),
             "ServerVersion": Utils.__version__
         }
 

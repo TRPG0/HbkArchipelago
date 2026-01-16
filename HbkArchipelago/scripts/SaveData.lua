@@ -153,7 +153,7 @@ end
 ---@param FileName string
 ---@return string
 function SaveData.GetFilePath(FileName)
-    return HbkMainExecutableDirectory.ue4ss.Mods.HbkArchipelago.save.__absolute_path .. "\\" .. FileName .. ".json"
+    return HbkMainExecutableDirectory.Mods.HbkArchipelago.save.__absolute_path .. "\\" .. FileName .. ".json"
 end
 
 ---@param FileName string?
