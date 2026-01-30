@@ -1,8 +1,3 @@
-Battle = require "Battle"
-UEHelpers = require "UEHelpers"
-SaveData = require "SaveData"
-Sequence = require "Sequence"
-
 local Hooks = {}
 
 ---@type Hook
@@ -73,7 +68,6 @@ Hooks.Receive_OnPostStartPlayHook = {
             Inventory.ShouldCheckForItemObjects = Util.LevelHasItemObjects()
 
             Inventory.SetItemObjectAmounts()
-            SaveData:AdjustSkillTags()
             Battle.GetTableForCurrentLevel()
         end
     end
@@ -147,7 +141,22 @@ Hooks.OnInteractionHook = {
         ---@type AHbkInteractItemBase
         local InteractItem = self:get()
         if InteractItem:GetClass():GetSuperStruct():GetFName():ToString() == "HbkVLogItem" then
-            print("OnInteraction " .. InteractItem:GetFullName() .. " " .. InteractItem.VLogTag.TagName:ToString() .. "\n")
+            print("OnInteraction " .. InteractItem:GetFName():ToString() .. "\n")
+        end
+    end
+}
+
+---@type Hook
+Hooks.HOCMachineOnInteractionHook = {
+    Target = "/Script/Hibiki.HbkGimmick_HOCMachine:OnInteraction",
+    PreCallback = function(self, Interactor)
+        --[[
+        ---@type AHbkGimmick_HOCMachine
+        local Machine = self:get()
+        print("OnInteraction " .. Machine:GetFName():ToString() .. "\n")]]
+
+        if SaveData.IsCurrentFileRandomized then
+            Store.OnPreStoreOpened()
         end
     end
 }
@@ -158,8 +167,7 @@ Hooks.Receive_OnStoreClosedHook = {
     PreCallback = function()
         print("Receive_OnStoreClosed\n")
         if SaveData.IsCurrentFileRandomized then
-            Multiworld:CheckLocationsAfterStoreClosed()
-            SaveData:AdjustSkillTags()
+            Store.OnStoreClosed()
         end
     end
 }
@@ -204,22 +212,6 @@ Hooks.SecretBoxGetItemHook = {
 }
 
 ---@type Hook
-Hooks.PigeonSubMissionOnStartHook = {
-    Target = "/Script/Hibiki.HbkAm1000_Pigeon_SubMission:OnStartSubMission",
-    PreCallback = function ()
-        print("AHbkAm1000_Pigeon_SubMission:OnStartSubMission\n")
-    end
-}
-
----@type Hook
-Hooks.PigeonSubMissionOnEndHook = {
-    Target = "/Script/Hibiki.HbkAm1000_Pigeon_SubMission:OnEndSubMission",
-    PreCallback = function ()
-        print("AHbkAm1000_Pigeon_SubMission:OnEndSubMission\n")
-    end
-}
-
----@type Hook
 Hooks.LoadSaveSlotHook = {
     Target = "/Script/Hibiki.HbkTitleMenuFlowManagerActor:LoadSaveSlot",
     PreCallback = function ()
@@ -254,6 +246,38 @@ Hooks.BattleEndedHook = {
     end
 }
 
+---@type Hook
+Hooks.RecieveTalkCueHook = {
+    Target = "/Script/Hibiki.HbkTalkEventSequence:RecieveTalkCue",
+    PreCallback = function (self, TalkCueName)
+        ---@type string
+        local TalkCue = TalkCueName:get():ToString()
+        print("RecieveTalkCue " .. TalkCue .. "\n")
+
+        if SaveData.IsCurrentFileRandomized then
+            if TalkCue == "ST14A_Mac_ShopStart" then
+                Store.OnPreStoreOpened()
+            end
+        end
+    end
+}
+
+---@type Hook
+Hooks.OnClickedToPurchaseButtonHook = {
+    Target = "/Script/Hibiki.HbkStoreMenuSpecialAttacksWidget:OnClickedToPurchaseButton",
+    PreCallback = function (self, Sender)
+        print("OnClickedToPurchaseButton\n")
+    end
+}
+
+---@type Hook
+Hooks.OnClickedToEquipmentButtonHook = {
+    Target = "/Script/Hibiki.HbkStoreMenuSpecialAttacksWidget:OnClickedToEquipmentButton",
+    PreCallback = function (self, Sender)
+        print("OnClickedToEquipmentButton\n")
+    end
+}
+
 ---@param Hook Hook
 local function RegisterSingleHook(Hook)
     if Hook.PreId ~= nil or Hook.PostId ~= nil then
@@ -283,15 +307,15 @@ function Hooks:RegisterAllHooks()
     --RegisterSingleHook(Hooks.LearnPlayerAbilityHook)
     RegisterSingleHook(Hooks.Multicast_UseItemHook)
     RegisterSingleHook(Hooks.OnInteractionHook)
+    RegisterSingleHook(Hooks.HOCMachineOnInteractionHook)
     RegisterSingleHook(Hooks.Receive_OnStoreClosedHook)
     RegisterSingleHook(Hooks.RequestDeleteGameHook)
     RegisterSingleHook(Hooks.RequestSaveGameHook)
     RegisterSingleHook(Hooks.RequestAutoSaveGameHook)
     RegisterSingleHook(Hooks.SecretBoxGetItemHook)
-    --RegisterSingleHook(Hooks.PigeonSubMissionOnStartHook)
-    --RegisterSingleHook(Hooks.PigeonSubMissionOnEndHook)
     RegisterSingleHook(Hooks.LoadSaveSlotHook)
     RegisterSingleHook(Hooks.BattleEndedHook)
+    RegisterSingleHook(Hooks.RecieveTalkCueHook)
 end
 
 function Hooks:UnregisterAllHooks()
@@ -303,15 +327,15 @@ function Hooks:UnregisterAllHooks()
     --UnregisterSingleHook(Hooks.LearnPlayerAbilityHook)
     UnregisterSingleHook(Hooks.Multicast_UseItemHook)
     UnregisterSingleHook(Hooks.OnInteractionHook)
+    UnregisterSingleHook(Hooks.HOCMachineOnInteractionHook)
     UnregisterSingleHook(Hooks.Receive_OnStoreClosedHook)
     UnregisterSingleHook(Hooks.RequestDeleteGameHook)
     UnregisterSingleHook(Hooks.RequestSaveGameHook)
     UnregisterSingleHook(Hooks.RequestAutoSaveGameHook)
     UnregisterSingleHook(Hooks.SecretBoxGetItemHook)
-    --UnregisterSingleHook(Hooks.PigeonSubMissionOnStartHook)
-    --UnregisterSingleHook(Hooks.PigeonSubMissionOnEndHook)
     UnregisterSingleHook(Hooks.LoadSaveSlotHook)
     UnregisterSingleHook(Hooks.BattleEndedHook)
+    UnregisterSingleHook(Hooks.RecieveTalkCueHook)
 end
 
 ---@type BPHook

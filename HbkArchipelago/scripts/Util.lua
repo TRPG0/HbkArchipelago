@@ -1,6 +1,3 @@
-ObjectCache = require "ObjectCache"
-UEHelpers = require "UEHelpers"
-
 Util = {}
 
 ---@type table<string, string>
@@ -116,8 +113,14 @@ end
 function Util.DoRandomizerFirstTimeSetup()
     Util.OpenAllHideOutChallenges()
 
-    local Valid, GameRuleManager = ObjectCache.FindGameRuleManager()
+    local Valid, PlayerCharacterManager = ObjectCache.FindPlayerCharacterManager()
     if Valid then
+        PlayerCharacterManager.PlayerStateInfo.JoinedPartnerFlags = PlayerCharacterManager.PlayerStateInfo.JoinedPartnerFlags | 1
+        PlayerCharacterManager:Set808Visibility(true)
+    end
+
+    local Valid2, GameRuleManager = ObjectCache.FindGameRuleManager()
+    if Valid2 then
         GameRuleManager:GotoHideOutDebug(UEHelpers.GetWorld(), true, 100, true, false)
     end
 end
@@ -174,6 +177,16 @@ function Util.GetParentTagsFromGameplayTag(TagString)
     end
 
     return FinalParts
+end
+
+---@param VLogItem string
+---@return number | nil
+function Util.GetVLogNumber(VLogItem)
+    local out = ""
+    for s in string.gmatch(VLogItem, "VLog #(%d+)") do
+        out = s
+    end
+    return tonumber(out)
 end
 
 ---@param GearsItem string

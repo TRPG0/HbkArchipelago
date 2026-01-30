@@ -1,12 +1,13 @@
-Config = require "Config"
-Item = require "Item"
-SaveData = require "SaveData"
-Util = require "Util"
-
-local Multiworld = {}
+Multiworld = {}
 
 ---@type table<number>
 local LocWaiting = {}
+
+---@type boolean
+Multiworld.CanGetItem = true
+
+---@type table<string>
+local ItemWaiting = {}
 
 local AP = require "lua-apclientpp"
 if AP == nil then
@@ -53,11 +54,20 @@ function Multiworld:Connect(host, slot, password)
             SaveData.Slot = slot
             SaveData.Address = host
             SaveData.Password = password
+            SaveData.StoreAttackChai = slot_data.StoreAttackChai
+            SaveData.StoreAttackPeppermint = slot_data.StoreAttackPeppermint
+            SaveData.StoreAttackMacaron = slot_data.StoreAttackMacaron
+            SaveData.StoreAttackKorsica = slot_data.StoreAttackKorsica
+            SaveData.StoreSpecialAttack = slot_data.StoreSpecialAttack
+            SaveData.StoreItem = slot_data.StoreItem
+            SaveData.StoreChip = slot_data.StoreChip
+            SaveData.AllowSell = slot_data.AllowSell
+            Multiworld.RequestStoreScouts()
             Util.DoRandomizerFirstTimeSetup()
             SaveData:Save()
         else
-            if SaveData.Version ~= slot_data.Version then
-                print("Versions do not match! (" .. SaveData.Version " ~= " ..  slot_data.Version .. ")\n")
+            if HbkModVersion ~= slot_data.Version then
+                print("Versions do not match! (" .. HbkModVersion " ~= " ..  slot_data.Version .. ")\n")
                 print("Some things may not work as expected!\n")
             end
             if SaveData.Seed ~= ap:get_seed() then
@@ -69,6 +79,7 @@ function Multiworld:Connect(host, slot, password)
     --if ConnectSlot fails
     ap:set_slot_refused_handler(function(reasons)
         print("ConnectSlot refused: " .. table.concat(reasons, ", ") .. "\n")
+        Multiworld:Disconnect()
     end)
 
     ap:set_items_received_handler(function (items)
@@ -77,17 +88,33 @@ function Multiworld:Connect(host, slot, password)
             if item.index and item.index > SaveData.Index then
                 local ItemName = ap:get_item_name(item.item, nil)
                 local FromPlayer = ap:get_player_alias(item.player)
-                print("Item: " .. ItemName .. " (from " .. FromPlayer .. ")\n")
-                --ExecuteInGameThread(function ()
+                if Multiworld.CanGetItem then
+                    print("Item: " .. ItemName .. " (from " .. FromPlayer .. ")\n")
                     Item.GetItem(ItemName)
-                --end)
+                else
+                    print("Can't get item right now! Adding to queue (" .. ItemName .. " from " .. FromPlayer .. ")\n")
+                    table.insert(ItemWaiting, ItemName)
+                end
             end
         end
     end)
 
     --when a location is scouted
     ap:set_location_info_handler(function (items)
-        print("Locations scouted\n")
+        print("Locations scouted! " .. tostring(#items) .. "\n")
+        for _, Item in ipairs(items) do
+            ---@cast Item NetworkItem
+            local LocStr = Store.InvertLocationIdTable[Item.location]
+            if LocStr then
+                SaveData.Scouts[LocStr] = {
+                    ItemName = ap:get_item_name(Item.item, ap:get_player_game(Item.player)),
+                    PlayerName = ap:get_player_alias(Item.player),
+                    Flags = Item.flags
+                }
+            else
+                print("Couldn't find location string for scouted ID " .. Item.location .. "\n")
+            end
+        end
     end)
 
     --unused as of right now:
@@ -121,6 +148,22 @@ function Multiworld:IsConnected()
     return ap ~= nil
 end
 
+---@param bool boolean
+function Multiworld:SetCanGetItem(bool)
+    if bool then
+        Multiworld.CanGetItem = true
+
+        if #ItemWaiting > 0 then
+            for _, ItemName in ipairs(ItemWaiting) do
+                Item.GetItem(ItemName)
+            end
+            ItemWaiting = {}
+        end
+    else
+        Multiworld.CanGetItem = false
+    end
+end
+
 ---@param Location string
 function Multiworld:CheckLocation(Location)
     if LocationIdTable[Location] then
@@ -130,35 +173,6 @@ function Multiworld:CheckLocation(Location)
     else
         print("No ID found for location \"" .. Location .. "\"\n")
     end
-end
-
-function Multiworld:CheckLocationsAfterStoreClosed()
-    ExecuteInGameThread(function ()
-        local Valid, PlayerCharacterManager = ObjectCache.FindPlayerCharacterManager()
-        if Valid then
-            ---@type int32 PlayerItem
-            local InventoryCategory = 1
-
-            ---@type TMap<EHbkInventoryCategory, FHbkPlayerInventoryItemList>
-            local SaveMap = PlayerCharacterManager.PlayerStateInfo.PlayerInventory.InventoryCategoryData.Map
-
-            SaveMap:ForEach(function (key, value)
-                if key:get() == InventoryCategory then
-                    value:get().List:ForEach(function (index, element)
-                        ---@type FHbkInventoryItem
-                        local CurrentItem = element:get()
-
-                        ---@type string
-                        local LocationStr = "Store/" .. CurrentItem.InventoryId.TagName:ToString()
-
-                        if LocationIdTable[LocationStr] and not Util.TableContains(SaveData.Checked, LocationStr) then
-                            Multiworld:CheckLocation(LocationStr)
-                        end
-                    end)
-                end
-            end)
-        end
-    end)
 end
 
 ---@param SequenceName string
@@ -178,6 +192,43 @@ function Multiworld:GoalCompleted()
         ExecuteAsync(function ()
             ap:StatusUpdate(30)
         end)
+    end
+end
+
+function Multiworld.RequestStoreScouts()
+    if ap then
+        ---@type table<number>
+        local ToScout = {}
+
+        if SaveData.StoreAttackChai then
+            ToScout = Store.GetLocationIdsForStoreItems(Store.AttacksChai, ToScout)
+        end
+        
+        if SaveData.StoreAttackPeppermint then
+            ToScout = Store.GetLocationIdsForStoreItems(Store.AttacksPeppermint, ToScout)
+        end
+
+        if SaveData.StoreAttackMacaron then
+            ToScout = Store.GetLocationIdsForStoreItems(Store.AttacksMacaron, ToScout)
+        end
+
+        if SaveData.StoreAttackKorsica then
+            ToScout = Store.GetLocationIdsForStoreItems(Store.AttacksKorsica, ToScout)
+        end
+
+        if SaveData.StoreSpecialAttack then
+            ToScout = Store.GetLocationIdsForStoreItems(Store.SpecialAttacks, ToScout)
+        end
+
+        if SaveData.StoreItem then
+            ToScout = Store.GetLocationIdsForStoreItems(Store.Items, ToScout)
+        end
+
+        if SaveData.StoreChip then
+            ToScout = Store.GetLocationIdsForStoreItems(Store.Chips, ToScout)
+        end
+
+        ap:LocationScouts(ToScout, false)
     end
 end
 

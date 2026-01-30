@@ -1,19 +1,23 @@
 from typing import List
 from dataclasses import dataclass
-from enum import Enum
+from enum import Enum, auto
 from BaseClasses import ItemClassification as IC
 
 
 class HbkItemType(Enum):
-    Track = 1
-    Ability = 2
-    Collectible = 3
-    Attack = 4
-    Partner = 5
-    SpecialAttack = 6
-    Chip = 7
-    VLog = 8
-    Gears = 9
+    Track = auto()
+    Ability = auto()
+    Collectible = auto()
+    StoreItem = auto()
+    AttackChai = auto()
+    AttackPeppermint = auto()
+    AttackMacaron = auto()
+    AttackKorsica = auto()
+    Partner = auto()
+    SpecialAttack = auto()
+    Chip = auto()
+    VLog = auto()
+    Gears = auto()
 
 
 @dataclass
@@ -38,109 +42,109 @@ item_list: List[HbkItem] = [
     HbkItem("Track 11", HbkItemType.Track, IC.progression, 0),
 
     HbkItem("Air Dash", HbkItemType.Ability, IC.progression, 0),
-    HbkItem("Air Parry", HbkItemType.Ability, IC.useful),
+    HbkItem("Air Parry", HbkItemType.AttackChai, IC.useful),
     HbkItem("Beat Hit", HbkItemType.Ability, IC.progression, 0),
-    HbkItem("Directional Parry", HbkItemType.Ability, IC.useful),
+    HbkItem("Directional Parry", HbkItemType.AttackChai, IC.progression),
     HbkItem("Dash", HbkItemType.Ability, IC.progression, 0),
     HbkItem("Magnet Grab", HbkItemType.Ability, IC.progression, 0),
-    HbkItem("Magnet Backstab", HbkItemType.Ability, IC.useful),
+    HbkItem("Magnet Backstab", HbkItemType.AttackChai, IC.useful),
     HbkItem("Parry", HbkItemType.Ability, IC.progression, 0),
     HbkItem("Rhythm Dodge", HbkItemType.Ability, IC.progression, 0),
     HbkItem("Special Attack", HbkItemType.Ability, IC.progression, 0),
 
-    HbkItem("Broken Armstrong Circuit", HbkItemType.Collectible, IC.filler, 52),
+    HbkItem("Broken Armstrong Circuit", HbkItemType.Collectible, IC.useful, 52),
     HbkItem("Life Gauge Piece", HbkItemType.Collectible, IC.filler, 23),
-    HbkItem("Life Gauge", HbkItemType.Collectible, IC.filler, 0), #6
+    HbkItem("Life Gauge", HbkItemType.StoreItem, IC.useful, 6),
     HbkItem("Broken Piece of a Health Tank", HbkItemType.Collectible, IC.filler, 8),
-    HbkItem("Health Tank", HbkItemType.Collectible, IC.filler, 0), #1
+    HbkItem("Health Tank", HbkItemType.StoreItem, IC.useful),
     HbkItem("Electric Reverb Core Piece", HbkItemType.Collectible, IC.filler, 11),
-    HbkItem("Electric Reverb Core", HbkItemType.Collectible, IC.filler, 0), #3
-    HbkItem("Additional Chip Slot", HbkItemType.Collectible, IC.filler, 0), #4
-    HbkItem("Special Attack Slot Upgrade", HbkItemType.Collectible, IC.filler, 0), #1
-    HbkItem("Rock Comic A", HbkItemType.Collectible, IC.useful), #Guitar Ride - SpecialAttack.020
-    HbkItem("Rock Comic B", HbkItemType.Collectible, IC.useful), #Air Guitar - SpecialAttack.060
+    HbkItem("Electric Reverb Core", HbkItemType.StoreItem, IC.useful, 3),
+    HbkItem("Additional Chip Slot", HbkItemType.StoreItem, IC.useful, 4),
+    HbkItem("Special Attack Slot Upgrade", HbkItemType.StoreItem, IC.useful),
+    HbkItem("Rock Comic A", HbkItemType.Collectible, IC.progression), #Guitar Ride - SpecialAttack.020
+    HbkItem("Rock Comic B", HbkItemType.Collectible, IC.progression), #Air Guitar - SpecialAttack.060
     HbkItem("Rock Comic C", HbkItemType.Collectible, IC.progression), #Staccato Launch - Combo.C-X
-    HbkItem("Rock Comic D", HbkItemType.Collectible, IC.useful), #Rip and Tear - SpecialAttack.080
+    HbkItem("Rock Comic D", HbkItemType.Collectible, IC.progression), #Rip and Tear - SpecialAttack.080
 
-    HbkItem("Air Countdown", HbkItemType.Attack, IC.useful, 0), #AirXXXX
-    HbkItem("Compressor Slam", HbkItemType.Attack, IC.useful), #AirXYXY
-    HbkItem("Harmonic Beam", HbkItemType.Attack, IC.useful), #AirXYYY
-    HbkItem("Hammer-On", HbkItemType.Attack, IC.useful, 0), #AirY
-    HbkItem("Staccato Launch", HbkItemType.Attack, IC.useful), #C-X
-    HbkItem("Gain Tornado", HbkItemType.Attack, IC.useful), #C-Y
-    HbkItem("Dash Attack", HbkItemType.Attack, IC.useful, 0), #D-X
-    HbkItem("Air Launch", HbkItemType.Attack, IC.useful, 0), #D-Y
-    HbkItem("Quick Beat Hit", HbkItemType.Attack, IC.useful), #Q-X
-    HbkItem("Steal Counter", HbkItemType.Attack, IC.useful), #Q-Y
-    HbkItem("Rise Up", HbkItemType.Attack, IC.useful, 0), #X-XX
-    HbkItem("Shred", HbkItemType.Attack, IC.useful), #XmY
-    HbkItem("Tune Up", HbkItemType.Attack, IC.useful), #XX-XXX
-    HbkItem("Humbucker", HbkItemType.Attack, IC.useful, 0), #XXXX
-    HbkItem("Arpeggio Stab", HbkItemType.Attack, IC.useful), #XXYYY
-    HbkItem("Echo Splash", HbkItemType.Attack, IC.useful), #XYXXX
-    HbkItem("Breakdown", HbkItemType.Attack, IC.useful, 0), #XYY
-    HbkItem("Tremolo", HbkItemType.Attack, IC.useful, 0), #YXX
-    HbkItem("Stomp Box", HbkItemType.Attack, IC.useful), #YXY
-    HbkItem("Pickup Crash", HbkItemType.Attack, IC.useful), #YYX
-    HbkItem("Grandslam", HbkItemType.Attack, IC.useful, 0), #YYY
+    HbkItem("Air Countdown", HbkItemType.AttackChai, IC.useful, 0), #AirXXXX
+    HbkItem("Compressor Slam", HbkItemType.AttackChai, IC.useful), #AirXYXY
+    HbkItem("Harmonic Beam", HbkItemType.AttackChai, IC.useful), #AirXYYY
+    HbkItem("Hammer-On", HbkItemType.AttackChai, IC.useful, 0), #AirY
+    HbkItem("Staccato Launch", HbkItemType.AttackChai, IC.useful), #C-X
+    HbkItem("Gain Tornado", HbkItemType.AttackChai, IC.useful), #C-Y
+    HbkItem("Dash Attack", HbkItemType.AttackChai, IC.useful, 0), #D-X
+    HbkItem("Air Launch", HbkItemType.AttackChai, IC.useful, 0), #D-Y
+    HbkItem("Quick Beat Hit", HbkItemType.AttackChai, IC.useful), #Q-X
+    HbkItem("Steal Counter", HbkItemType.AttackChai, IC.useful), #Q-Y
+    HbkItem("Rise Up", HbkItemType.AttackChai, IC.useful, 0), #X-XX
+    HbkItem("Shred", HbkItemType.AttackChai, IC.useful), #XmY
+    HbkItem("Tune Up", HbkItemType.AttackChai, IC.useful), #XX-XXX
+    HbkItem("Humbucker", HbkItemType.AttackChai, IC.useful, 0), #XXXX
+    HbkItem("Arpeggio Stab", HbkItemType.AttackChai, IC.useful), #XXYYY
+    HbkItem("Echo Splash", HbkItemType.AttackChai, IC.useful), #XYXXX
+    HbkItem("Breakdown", HbkItemType.AttackChai, IC.useful, 0), #XYY
+    HbkItem("Tremolo", HbkItemType.AttackChai, IC.useful, 0), #YXX
+    HbkItem("Stomp Box", HbkItemType.AttackChai, IC.useful), #YXY
+    HbkItem("Pickup Crash", HbkItemType.AttackChai, IC.useful), #YYX
+    HbkItem("Grandslam", HbkItemType.AttackChai, IC.useful, 0), #YYY
 
     HbkItem("Peppermint", HbkItemType.Partner, IC.progression, 0),
     HbkItem("Macaron", HbkItemType.Partner, IC.progression, 0),
     HbkItem("Korsica", HbkItemType.Partner, IC.progression, 0),
 
-    HbkItem("Cannon Spike", HbkItemType.Attack, IC.useful), #Charge.P01
-    HbkItem("Kick Shot", HbkItemType.Attack, IC.useful), #Counter.P01
-    HbkItem("Switch Kicker", HbkItemType.Attack, IC.useful), #JamCombo.PG01
-    HbkItem("Master Blaster", HbkItemType.Attack, IC.useful), #JamCombo.PA01
-    HbkItem("Gravity Well", HbkItemType.Attack, IC.useful), #Charge.M01
-    HbkItem("Love Tap", HbkItemType.Attack, IC.useful), #Counter.M01
-    HbkItem("Double Bass Drop", HbkItemType.Attack, IC.useful), #JamCombo.MG01
-    HbkItem("High Strung", HbkItemType.Attack, IC.useful), #JamCombo.MA01
-    HbkItem("Korsica Typhoon", HbkItemType.Attack, IC.useful), #Charge.K01
-    HbkItem("High Alert", HbkItemType.Attack, IC.useful), #Counter.K01
-    HbkItem("High Security Risk", HbkItemType.Attack, IC.useful), #JamCombo.KG01
-    HbkItem("Tornado Lift", HbkItemType.Attack, IC.useful), #JamCombo.KA01
+    HbkItem("Cannon Spike", HbkItemType.AttackPeppermint, IC.useful), #Charge.P01
+    HbkItem("Kick Shot", HbkItemType.AttackPeppermint, IC.useful), #Counter.P01
+    HbkItem("Switch Kicker", HbkItemType.AttackPeppermint, IC.useful), #JamCombo.PG01
+    HbkItem("Master Blaster", HbkItemType.AttackPeppermint, IC.useful), #JamCombo.PA01
+    HbkItem("Gravity Well", HbkItemType.AttackMacaron, IC.useful), #Charge.M01
+    HbkItem("Love Tap", HbkItemType.AttackMacaron, IC.useful), #Counter.M01
+    HbkItem("Double Bass Drop", HbkItemType.AttackMacaron, IC.useful), #JamCombo.MG01
+    HbkItem("High Strung", HbkItemType.AttackMacaron, IC.useful), #JamCombo.MA01
+    HbkItem("Korsica Typhoon", HbkItemType.AttackKorsica, IC.useful), #Charge.K01
+    HbkItem("High Alert", HbkItemType.AttackKorsica, IC.useful), #Counter.K01
+    HbkItem("High Security Risk", HbkItemType.AttackKorsica, IC.useful), #JamCombo.KG01
+    HbkItem("Tornado Lift", HbkItemType.AttackKorsica, IC.useful), #JamCombo.KA01
 
     HbkItem("Power Chord", HbkItemType.SpecialAttack, IC.useful, 0), #SpecialAttack.010
-    HbkItem("Guitar Ride", HbkItemType.SpecialAttack, IC.useful, 0), #SpecialAttack.020
-    HbkItem("Pick Me Up!", HbkItemType.SpecialAttack, IC.useful, 0), #SpecialAttack.030
-    HbkItem("Pick Slide", HbkItemType.SpecialAttack, IC.useful, 0), #SpecialAttack.040
-    HbkItem("High Pitch Punch", HbkItemType.SpecialAttack, IC.useful, 0), #SpecialAttack.050
-    HbkItem("Air Guitar", HbkItemType.SpecialAttack, IC.useful, 0), #SpecialAttack.060
-    HbkItem("Rip and Tear", HbkItemType.SpecialAttack, IC.useful, 0), #SpecialAttack.080
-    HbkItem("Double Riff", HbkItemType.SpecialAttack, IC.useful, 0), #SpecialAttack.310
-    HbkItem("Barrier Wall", HbkItemType.SpecialAttack, IC.useful, 0), #SpecialAttack.330
-    HbkItem("Twin Assault", HbkItemType.SpecialAttack, IC.useful, 0), #SpecialAttack.340
-    HbkItem("Steal the Show", HbkItemType.SpecialAttack, IC.useful, 0), #SpecialAttack.350
-    HbkItem("Holo-Chai", HbkItemType.SpecialAttack, IC.useful, 0), #SpecialAttack.360
-    HbkItem("Hibiki!", HbkItemType.SpecialAttack, IC.useful, 0), #SpecialAttack.610
-    HbkItem("Overdrive Slash", HbkItemType.SpecialAttack, IC.useful, 0), #SpecialAttack.620
-    HbkItem("808-Gigawatt Cat-attack", HbkItemType.SpecialAttack, IC.useful, 0), #SpecialAttack.910
+    HbkItem("Guitar Ride", HbkItemType.SpecialAttack, IC.useful), #SpecialAttack.020
+    HbkItem("Pick Me Up!", HbkItemType.SpecialAttack, IC.useful), #SpecialAttack.030
+    HbkItem("Pick Slide", HbkItemType.SpecialAttack, IC.useful), #SpecialAttack.040
+    HbkItem("High Pitch Punch", HbkItemType.SpecialAttack, IC.useful), #SpecialAttack.050
+    HbkItem("Air Guitar", HbkItemType.SpecialAttack, IC.useful), #SpecialAttack.060
+    HbkItem("Rip and Tear", HbkItemType.SpecialAttack, IC.useful), #SpecialAttack.080
+    HbkItem("Double Riff", HbkItemType.SpecialAttack, IC.useful), #SpecialAttack.310
+    HbkItem("Barrier Wall", HbkItemType.SpecialAttack, IC.useful), #SpecialAttack.330
+    HbkItem("Twin Assault", HbkItemType.SpecialAttack, IC.useful), #SpecialAttack.340
+    HbkItem("Steal the Show", HbkItemType.SpecialAttack, IC.useful), #SpecialAttack.350
+    HbkItem("Holo-Chai", HbkItemType.SpecialAttack, IC.useful), #SpecialAttack.360
+    HbkItem("Hibiki!", HbkItemType.SpecialAttack, IC.useful), #SpecialAttack.610
+    HbkItem("Overdrive Slash", HbkItemType.SpecialAttack, IC.useful), #SpecialAttack.620
+    HbkItem("808-Gigawatt Cat-attack", HbkItemType.SpecialAttack, IC.useful), #SpecialAttack.910
     HbkItem("CNMANIAC", HbkItemType.SpecialAttack, IC.useful, 0), #SpecialAttack.1010
     HbkItem("My Hero!", HbkItemType.SpecialAttack, IC.useful, 0), #SpecialAttack.1020
 
-    HbkItem("Battery Magnet", HbkItemType.Chip, IC.useful, 0), #3
-    HbkItem("Combo Holder", HbkItemType.Chip, IC.useful, 0), #3
-    HbkItem("Korsica Compatibility", HbkItemType.Chip, IC.useful, 0), #3
-    HbkItem("Macaron Compatibility", HbkItemType.Chip, IC.useful, 0), #3
-    HbkItem("Peppermint Compatibility", HbkItemType.Chip, IC.useful, 0), #3
-    HbkItem("Damage Rebound D-Parry", HbkItemType.Chip, IC.useful, 0), #3
-    HbkItem("Invincible D-Parry", HbkItemType.Chip, IC.useful, 0), #3
+    HbkItem("Peppermint Compatibility", HbkItemType.Chip, IC.useful, 3),
+    HbkItem("Health Kick", HbkItemType.Chip, IC.useful, 3),
+    HbkItem("Battery Magnet", HbkItemType.Chip, IC.useful, 3),
+    HbkItem("Rhythm Meter Rush", HbkItemType.Chip, IC.useful, 3),
+    HbkItem("Parry Health", HbkItemType.Chip, IC.useful, 3),
+    HbkItem("Parry Charge", HbkItemType.Chip, IC.useful, 3),
+    HbkItem("Invincible D-Parry", HbkItemType.Chip, IC.useful, 3),
+    HbkItem("Damage Rebound D-Parry", HbkItemType.Chip, IC.useful, 3),
+    HbkItem("Combo Holder", HbkItemType.Chip, IC.useful, 3),
+    HbkItem("Rhythm Dodge Pull Plus", HbkItemType.Chip, IC.useful, 3),
+    HbkItem("Rhythm Dodge Pull Cancel", HbkItemType.Chip, IC.useful),
+    HbkItem("Peppermint Shock Advantage", HbkItemType.Chip, IC.useful, 3),
+    HbkItem("Peppermint Shock Jump", HbkItemType.Chip, IC.useful, 3),
+    HbkItem("Macaron Compatibility", HbkItemType.Chip, IC.useful, 3),
+    HbkItem("Macaron's Lucky Punch", HbkItemType.Chip, IC.useful, 3),
+    HbkItem("Macaron's Aftershock", HbkItemType.Chip, IC.useful, 3),
+    HbkItem("Korsica Compatibility", HbkItemType.Chip, IC.useful, 3),
+    HbkItem("Super High Alert", HbkItemType.Chip, IC.useful, 3),
+    HbkItem("Korsica Stun Extend", HbkItemType.Chip, IC.useful, 3),
     HbkItem("Chip Sense", HbkItemType.Chip, IC.useful, 0), #1
-    HbkItem("Instant Partner Recharge", HbkItemType.Chip, IC.useful, 0), #1
+    HbkItem("Instant Partner Recharge", HbkItemType.Chip, IC.useful, 1),
     HbkItem("Gear Increase", HbkItemType.Chip, IC.useful, 0), #3
-    HbkItem("Rhythm Dodge Pull Cancel", HbkItemType.Chip, IC.useful, 0), #1
-    HbkItem("Rhythm Dodge Pull Plus", HbkItemType.Chip, IC.useful, 0), #3
-    HbkItem("Korsica Stun Extend", HbkItemType.Chip, IC.useful, 0), #3
-    HbkItem("Super High Alert", HbkItemType.Chip, IC.useful, 0), #3
-    HbkItem("Macaron's Lucky Punch", HbkItemType.Chip, IC.useful, 0), #3
-    HbkItem("Macaron's Aftershock", HbkItemType.Chip, IC.useful, 0), #3
-    HbkItem("Peppermint Shock Advantage", HbkItemType.Chip, IC.useful, 0), #3
-    HbkItem("Peppermint Shock Jump", HbkItemType.Chip, IC.useful, 0), #3
-    HbkItem("Parry Charge", HbkItemType.Chip, IC.useful, 0), #3
-    HbkItem("Parry Health", HbkItemType.Chip, IC.useful, 0), #3
-    HbkItem("Health Kick", HbkItemType.Chip, IC.useful, 0), #3
-    HbkItem("Rhythm Meter Rush", HbkItemType.Chip, IC.useful, 0), #3
     HbkItem("Enemy Analyze", HbkItemType.Chip, IC.useful, 0), #1
     HbkItem("High Risk, High Return", HbkItemType.Chip, IC.useful, 0), #3
 

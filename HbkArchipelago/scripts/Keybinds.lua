@@ -1,9 +1,3 @@
-Ability = require "Ability"
-ObjectCache = require "ObjectCache"
-UEHelpers = require "UEHelpers"
-SaveData = require "SaveData"
-Util = require "Util"
-
 RegisterKeyBind(Key.ONE, { ModifierKey.CONTROL }, function ()
     SaveData:PrintAll()
 end)

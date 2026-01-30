@@ -1,6 +1,3 @@
-SaveData = require "SaveData"
-Util = require "Util"
-
 SkillTags = {}
 
 --Light Attack
@@ -598,11 +595,5 @@ SkillTags.SpecialAttack1020 = {
         {TagName = FName("Player.Skill.SPA")}
     }
 }
-
----@param Tags HbkPlayerStateInfoTags
-function SkillTags.Add(Tags)
-    Util.AddToTableIfNotHas(SaveData.SkillTags, Tags.GameplayTag.TagName:ToString())
-    SaveData:AdjustSkillTags()
-end
 
 return SkillTags

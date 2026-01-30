@@ -1,11 +1,8 @@
-ObjectCache = require "ObjectCache"
-Util = require "Util"
-dkjson = require "dkjson" 
-
 local SaveData = {}
 
 ---@type boolean
-SaveData.IsCurrentFileRandomized = false 
+SaveData.IsCurrentFileRandomized = false
+
 
 ---@type string
 SaveData.Seed = ""
@@ -40,30 +37,36 @@ SaveData.CompletedLevels = {}
 ---@type table<integer>
 SaveData.UnlockedLevels = { 1 }
 
----@type table<string>
-SaveData.SkillTags = {
-    "Player.Skill.Attack.X",
-    "Player.Skill.Attack.Y",
-    "Player.Skill.Combo.XXXX",
-    "Player.Skill.Combo.YYY",
-    "Player.Skill.Combo.XYY",
-    "Player.Skill.Combo.YXX",
-    "Player.Skill.Combo.X-XX",
-    "Player.Skill.Combo.AirXXXX",
-    "Player.Skill.Combo.AirY",
-    "Player.Skill.Combo.D-X",
-    "Player.Skill.Combo.D-Y"
-}
-
----@type table<string>
-SaveData.AbilityTags = {
-    "Player.Skill.Action.Dash",
-    "Player.Skill.Action.RhythmDash",
-    "Player.Skill.Action.AirDash"
-}
-
 ---@type boolean
 SaveData.TrackOrderNormal = true
+
+---@type boolean
+SaveData.StoreAttackChai = false
+
+---@type boolean
+SaveData.StoreAttackPeppermint = false
+
+---@type boolean
+SaveData.StoreAttackMacaron = false
+
+---@type boolean
+SaveData.StoreAttackKorsica = false
+
+---@type boolean
+SaveData.StoreSpecialAttack = false
+
+---@type boolean
+SaveData.StoreItem = false
+
+---@type boolean
+SaveData.StoreChip = false
+
+---@type boolean
+SaveData.AllowSell = true
+
+---@type table<string, ScoutedItem>
+SaveData.Scouts = {}
+
 
 local SaveDataDefault = {}
 
@@ -100,30 +103,36 @@ SaveDataDefault.CompletedLevels = {}
 ---@type table<integer>
 SaveDataDefault.UnlockedLevels = { 1 }
 
----@type table<string>
-SaveDataDefault.SkillTags = {
-    "Player.Skill.Attack.X",
-    "Player.Skill.Attack.Y",
-    "Player.Skill.Combo.XXXX",
-    "Player.Skill.Combo.YYY",
-    "Player.Skill.Combo.XYY",
-    "Player.Skill.Combo.YXX",
-    "Player.Skill.Combo.X-XX",
-    "Player.Skill.Combo.AirXXXX",
-    "Player.Skill.Combo.AirY",
-    "Player.Skill.Combo.D-X",
-    "Player.Skill.Combo.D-Y"
-}
-
----@type table<string>
-SaveDataDefault.AbilityTags = {
-    "Player.Skill.Action.Dash",
-    "Player.Skill.Action.RhythmDash",
-    "Player.Skill.Action.AirDash"
-}
-
 ---@type boolean
 SaveDataDefault.TrackOrderNormal = true
+
+---@type boolean
+SaveDataDefault.StoreAttackChai = false
+
+---@type boolean
+SaveDataDefault.StoreAttackPeppermint = false
+
+---@type boolean
+SaveDataDefault.StoreAttackMacaron = false
+
+---@type boolean
+SaveDataDefault.StoreAttackKorsica = false
+
+---@type boolean
+SaveDataDefault.StoreSpecialAttack = false
+
+---@type boolean
+SaveDataDefault.StoreItem = false
+
+---@type boolean
+SaveDataDefault.StoreChip = false
+
+---@type boolean
+SaveDataDefault.AllowSell = true
+
+---@type table<string, ScoutedItem>
+SaveDataDefault.Scouts = {}
+
 
 ---@param Version string
 function SaveData:SetModVersion(Version)
@@ -143,9 +152,16 @@ function SaveData:ResetToDefault()
     SaveData.Checked = SaveDataDefault.Checked
     SaveData.CompletedLevels = SaveDataDefault.CompletedLevels
     SaveData.UnlockedLevels = SaveDataDefault.UnlockedLevels
-    SaveData.SkillTags = SaveDataDefault.SkillTags
-    SaveData.AbilityTags = SaveDataDefault.AbilityTags
     SaveData.TrackOrderNormal = SaveDataDefault.TrackOrderNormal
+    SaveData.StoreAttackChai = SaveDataDefault.StoreAttackChai
+    SaveData.StoreAttackPeppermint = SaveDataDefault.StoreAttackPeppermint
+    SaveData.StoreAttackMacaron = SaveDataDefault.StoreAttackMacaron
+    SaveData.StoreAttackKorsica = SaveDataDefault.StoreAttackKorsica
+    SaveData.StoreSpecialAttack = SaveDataDefault.StoreSpecialAttack
+    SaveData.StoreItem = SaveDataDefault.StoreItem
+    SaveData.StoreChip = SaveDataDefault.StoreChip
+    SaveData.AllowSell = SaveDataDefault.AllowSell
+    SaveData.Scouts = SaveDataDefault.Scouts
     print("Current save data reset to default\n")
     SaveData.IsCurrentFileRandomized = false
 end
@@ -175,9 +191,16 @@ function SaveData:Save(FileName)
                 Checked = SaveData.Checked,
                 CompletedLevels = SaveData.CompletedLevels,
                 UnlockedLevels = SaveData.UnlockedLevels,
-                SkillTags = SaveData.SkillTags,
-                AbilityTags = SaveData.AbilityTags,
-                TrackOrderNormal = SaveData.TrackOrderNormal
+                TrackOrderNormal = SaveData.TrackOrderNormal,
+                StoreAttackChai = SaveData.StoreAttackChai,
+                StoreAttackPeppermint = SaveData.StoreAttackPeppermint,
+                StoreAttackMacaron = SaveData.StoreAttackMacaron,
+                StoreAttackKorsica = SaveData.StoreAttackKorsica,
+                StoreSpecialAttack = SaveData.StoreSpecialAttack,
+                StoreItem = SaveData.StoreItem,
+                StoreChip = SaveData.StoreChip,
+                AllowSell = SaveData.AllowSell,
+                Scouts = SaveData.Scouts
             }, { indent = true }))
             io.close(file)
             print("Saved data at " .. path .. "\n")
@@ -220,11 +243,21 @@ function SaveData:Load(FileName)
             SaveData.Checked = decode.Checked or SaveDataDefault.Checked
             SaveData.CompletedLevels = decode.CompletedLevels or SaveDataDefault.CompletedLevels
             SaveData.UnlockedLevels = decode.UnlockedLevels or SaveDataDefault.UnlockedLevels
-            SaveData.SkillTags = decode.SkillTags or SaveDataDefault.SkillTags
-            SaveData.AbilityTags = decode.AbilityTags or SaveDataDefault.AbilityTags
             SaveData.TrackOrderNormal = decode.TrackOrderNormal or SaveDataDefault.TrackOrderNormal
+            SaveData.StoreAttackChai = decode.StoreAttackChai or SaveDataDefault.StoreAttackChai
+            SaveData.StoreAttackPeppermint = decode.StoreAttackPeppermint or SaveDataDefault.StoreAttackPeppermint
+            SaveData.StoreAttackMacaron = decode.StoreAttackMacaron or SaveDataDefault.StoreAttackMacaron
+            SaveData.StoreAttackKorsica = decode.StoreAttackKorsica or SaveDataDefault.StoreAttackKorsica
+            SaveData.StoreSpecialAttack = decode.StoreSpecialAttack or SaveDataDefault.StoreSpecialAttack
+            SaveData.StoreItem = decode.StoreItem or SaveDataDefault.StoreItem
+            SaveData.StoreChip = decode.StoreChip or SaveDataDefault.StoreChip
+            SaveData.AllowSell = decode.AllowSell or SaveDataDefault.AllowSell
+            SaveData.Scouts = decode.Scouts or SaveDataDefault.Scouts
             print("File loaded from " .. path .. "\n")
             SaveData.IsCurrentFileRandomized = true
+            if SaveData.Version ~= HbkModVersion then
+                print("Save data appears to have been created for a different version of the mod. (" .. HbkModVersion .. " ~= " .. SaveData.Version .. "\n")
+            end
         end
         io.close(file)
     end
@@ -261,14 +294,14 @@ function SaveData:PrintAll()
     for _, num in ipairs(SaveData.UnlockedLevels) do
         print(num .. "\n")
     end
-    print("Skill Tags:\n")
-    for _, tag in ipairs(SaveData.SkillTags) do
-        print(tag .. "\n")
-    end
-    print("Ability Tags:\n")
-    for _, tag in ipairs(SaveData.AbilityTags) do
-        print(tag .. "\n")
-    end
+    print("StoreAttackChai: " .. tostring(SaveData.StoreAttackChai) .. "\n")
+    print("StoreAttackPeppermint: " .. tostring(SaveData.StoreAttackPeppermint) .. "\n")
+    print("StoreAttackMacaron: " .. tostring(SaveData.StoreAttackMacaron) .. "\n")
+    print("StoreAttackKorsica: " .. tostring(SaveData.StoreAttackKorsica) .. "\n")
+    print("StoreSpecialAttack: " .. tostring(SaveData.StoreSpecialAttack) .. "\n")
+    print("StoreItem: " .. tostring(SaveData.StoreItem) .. "\n")
+    print("StoreChip: " .. tostring(SaveData.StoreChip) .. "\n")
+    print("AllowSell: " .. tostring(SaveData.AllowSell) .. "\n")
 end
 
 ---@return string
@@ -278,35 +311,6 @@ function SaveData.GetCurrentSlotName()
         return SaveGameManager:GetCurrentSlotName():ToString()
     end
     return ""
-end
-
-function SaveData:AdjustSkillTags()
-    local Valid, PlayerCharacterManager = ObjectCache.FindPlayerCharacterManager()
-    if Valid then
-        ---@type TArray<FGameplayTag>
-        local NewGameplayTags = {}
-
-        ---@type table<string>
-        local NewParentStrings = {}
-
-        ---@type TArray<FGameplayTag>
-        local NewParentTags = {}
-
-        for _, tag in ipairs(SaveData.SkillTags) do
-            table.insert(NewGameplayTags, {TagName = FName(tag)})
-
-            for _, parent in ipairs(Util.GetParentTagsFromGameplayTag(tag)) do
-                Util.AddToTableIfNotHas(NewParentStrings, parent)
-            end
-        end
-
-        for _, parent in ipairs(NewParentStrings) do
-            table.insert(NewParentTags, {TagName = FName(parent)})
-        end
-
-        PlayerCharacterManager.PlayerStateInfo.SkillTags.GameplayTags = NewGameplayTags
-        PlayerCharacterManager.PlayerStateInfo.SkillTags.ParentTags = NewParentTags
-    end
 end
 
 ---@param Level integer

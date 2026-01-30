@@ -1,7 +1,3 @@
-InventoryItem = require "InventoryItem"
-ObjectCache = require "ObjectCache"
-UEHelpers = require "UEHelpers"
-
 Inventory = {}
 
 ---@type boolean

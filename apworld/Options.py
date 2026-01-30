@@ -1,24 +1,77 @@
 from dataclasses import dataclass
-from Options import Toggle, PerGameCommonOptions, Visibility
+from Options import Toggle, DefaultOnToggle, PerGameCommonOptions, StartInventoryPool, Visibility
 
 
-class VLogRewards(Toggle):
+class AttackChaiShuffle(Toggle):
     """
-    Adds items for finding the VLogs around Vandelay campus.
+    Shuffles Chai's attacks from the store into the multiworld.
     """
-    display_name = "VLog Rewards"
-    visibility = Visibility.none
+    display_name = "Shuffle Chai Attacks"
 
 
-class GraffitiRewards(Toggle):
+class AttackPeppermintShuffle(Toggle):
     """
-    Adds items for finding the graffiti around Vandelay campus.
+    Shuffles Peppermint's attacks from the store into the multiworld.
     """
-    display_name = "Graffiti Rewards"
+    display_name = "Shuffle Peppermint Attacks"
+
+
+class AttackMacaronShuffle(Toggle):
+    """
+    Shuffles Macaron's attacks from the store into the multiworld.
+    """
+    display_name = "Shuffle Macaron Attacks"
+
+
+class AttackKorsicaShuffle(Toggle):
+    """
+    Shuffles Korsica's attacks from the store into the multiworld.
+    """
+    display_name = "Shuffle Korsica Attacks"
+
+
+class SpecialAttackShuffle(Toggle):
+    """
+    Shuffles Chai's special attacks from the store into the multiworld.
+    """
+    display_name = "Shuffle Special Attacks"
+
+
+class StoreItemShuffle(Toggle):
+    """
+    Shuffles the items from the store into the multiworld.
+    """
+    display_name = "Shuffle Store Items"
+
+
+class ChipShuffle(Toggle):
+    """
+    Shuffles the chips from the store into the multiworld.
+    """
+    display_name = "Shuffle Chips"
+
+
+class AllowSell(DefaultOnToggle):
+    """
+    Choose if attacks and special attacks should be able to be sold after getting a location check from them.
+
+    If disabled, after purchasing something in the store that can be sold, its value will be set to 0.
+
+    Items and chips can't be sold.
+    """
+    display_name = "Allow Selling in Store"
     visibility = Visibility.none
 
 
 @dataclass
 class HbkOptions(PerGameCommonOptions):
-    vlog_rewards: VLogRewards
-    graffiti_rewards: GraffitiRewards
+    shuffle_chai_attacks: AttackChaiShuffle
+    shuffle_peppermint_attacks: AttackPeppermintShuffle
+    shuffle_macaron_attacks: AttackMacaronShuffle
+    shuffle_korsica_attacks: AttackKorsicaShuffle
+    shuffle_special_attacks: SpecialAttackShuffle
+    shuffle_store_items: StoreItemShuffle
+    shuffle_chips: ChipShuffle
+    allow_selling_in_store: AllowSell
+
+    start_inventory_from_pool: StartInventoryPool

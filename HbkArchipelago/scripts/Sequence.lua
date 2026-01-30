@@ -1,5 +1,3 @@
-Ability = require "Ability"
-
 Sequence = {}
 
 ---@type table<string, OnSequence>
@@ -96,11 +94,6 @@ Sequence.OnEndSequence = {
         Callback = function ()
             --Beat hit does not unlock if you skip tutorial
             Ability.BeatHit:Add()
-
-            local Valid, PlayerCharacterManager = ObjectCache.FindPlayerCharacterManager()
-            if Valid then
-                PlayerCharacterManager:Set808Visibility(true)
-            end
         end,
         OnlyIfRandomized = true
     }

@@ -1,6 +1,3 @@
-ObjectCache = require "ObjectCache"
-UEHelpers = require "UEHelpers"
-
 Stage = {}
 
 ---@type table<string, integer>
@@ -19,8 +16,8 @@ Stage.ThumbNameToNum = {
     ["T_StageSelect_Img_12"] = 12
 }
 
----@type boolean
-local StageSelectClosed = true
+---@type integer | nil
+local LoopHandle = nil
 
 ---@type integer
 local CurrentStage, PreviousStage = 1, 1
@@ -28,26 +25,27 @@ local CurrentStage, PreviousStage = 1, 1
 ---@type boolean
 local IsMovingRight = true
 
-RegisterHook("/Script/Hibiki.HbkShowStageSelect:ShowStageSelect", function(self, WorldContextObject, StageSelectController)
-    print("ShowStageSelect\n")
-    StageSelectClosed = false
-end)
-
 RegisterHook("/Script/Hibiki.HbkShowStageSelect:DecidedStage", function()
     print("DecidedStage\n")
-    StageSelectClosed = true
+    if LoopHandle then
+        CancelDelayedAction(LoopHandle)
+        LoopHandle = nil
+    end
 end)
 
 RegisterHook("/Script/Hibiki.HbkShowStageSelect:CancelSelect", function()
     print("CancelSelect\n")
-    StageSelectClosed = true
+    if LoopHandle then
+        CancelDelayedAction(LoopHandle)
+        LoopHandle = nil
+    end
 end)
 
 NotifyOnNewObject("/Script/Hibiki.HbkStageSelectMenuWidget", function(NewObject) ---@param NewObject UHbkStageSelectMenuWidget
     print("New StageSelect_UI!\n")
 
     if SaveData.IsCurrentFileRandomized then
-        LoopAsync(33, function()
+        LoopHandle = LoopInGameThreadAfterFrames(1, function()
             NewObject.LeftArrowButton.HoldDownDuration = 0.001
             NewObject.RightArrowButton.HoldDownDuration = 0.001
 
@@ -71,7 +69,6 @@ NotifyOnNewObject("/Script/Hibiki.HbkStageSelectMenuWidget", function(NewObject)
             end
 
             PreviousStage = CurrentStage
-            return StageSelectClosed == true
         end)
     end
 end)

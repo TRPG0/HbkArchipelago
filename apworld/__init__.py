@@ -40,15 +40,36 @@ class HiFiRushWorld(World):
         super(HiFiRushWorld, self).__init__(multiworld, player)
         self.skipped_location_types: List[HbkLocationType] = [
             HbkLocationType.Ability,
-            HbkLocationType.Chip,
             HbkLocationType.Graffiti,
             HbkLocationType.Partner,
-            HbkLocationType.StoreItem,
             HbkLocationType.SPECTRA,
-            HbkLocationType.SpecialAttack,
             HbkLocationType.SubMission,
-            HbkLocationType.NPCItem
+            HbkLocationType.NPCItem,
+            HbkLocationType.VLog
         ]
+
+
+    def generate_early(self):
+        if not self.options.shuffle_chai_attacks:
+            self.skipped_location_types.append(HbkLocationType.AttackChai)
+
+        if not self.options.shuffle_peppermint_attacks:
+            self.skipped_location_types.append(HbkLocationType.AttackPeppermint)
+
+        if not self.options.shuffle_macaron_attacks:
+            self.skipped_location_types.append(HbkLocationType.AttackMacaron)
+
+        if not self.options.shuffle_korsica_attacks:
+            self.skipped_location_types.append(HbkLocationType.AttackKorsica)
+
+        if not self.options.shuffle_special_attacks:
+            self.skipped_location_types.append(HbkLocationType.SpecialAttack)
+
+        if not self.options.shuffle_store_items:
+            self.skipped_location_types.append(HbkLocationType.StoreItem)
+
+        if not self.options.shuffle_chips:
+            self.skipped_location_types.append(HbkLocationType.Chip)
 
 
     def set_rules(self):
@@ -59,7 +80,13 @@ class HiFiRushWorld(World):
         classification = ItemClassification.filler
         for i in item_list:
             if i.name == name:
-                classification = i.classification
+                if i.name == "Broken Armstrong Circuit":
+                    if self.options.shuffle_chips:
+                        classification = ItemClassification.progression_deprioritized_skip_balancing
+                    else:
+                        classification = i.classification
+                else:
+                    classification = i.classification
         return HiFiRushItem(name, classification, self.item_name_to_id[name], self.player)
 
 
@@ -71,18 +98,20 @@ class HiFiRushWorld(World):
     #    pass
 
 
-    def generate_early(self):
-        if not self.options.vlog_rewards:
-            self.skipped_location_types.append(HbkLocationType.VLog)
-
-
     def create_items(self):
         pool = []
 
         for item in item_list:
             count: int = item.count
 
-            if not self.options.vlog_rewards and item.item_type == HbkItemType.VLog:
+            if item.item_type == HbkItemType.AttackChai and not self.options.shuffle_chai_attacks\
+            or item.item_type == HbkItemType.AttackPeppermint and not self.options.shuffle_peppermint_attacks\
+            or item.item_type == HbkItemType.AttackMacaron and not self.options.shuffle_macaron_attacks\
+            or item.item_type == HbkItemType.AttackKorsica and not self.options.shuffle_korsica_attacks\
+            or item.item_type == HbkItemType.SpecialAttack and not self.options.shuffle_special_attacks\
+            or item.item_type == HbkItemType.StoreItem and not self.options.shuffle_store_items\
+            or item.item_type == HbkItemType.Chip and not self.options.shuffle_chips\
+            or item.item_type == HbkItemType.VLog:
                 count = 0
 
             if count <= 0:
@@ -125,7 +154,16 @@ class HiFiRushWorld(World):
     def fill_slot_data(self):
         slot_data: Dict[str, Any] = {
             "Version": self.world_version.as_simple_string(),
-            "ServerVersion": Utils.__version__
+            "ServerVersion": Utils.__version__,
+            "PlayerCount": self.multiworld.players,
+            "StoreAttackChai": bool(self.options.shuffle_chai_attacks),
+            "StoreAttackPeppermint": bool(self.options.shuffle_peppermint_attacks),
+            "StoreAttackMacaron": bool(self.options.shuffle_macaron_attacks),
+            "StoreAttackKorsica": bool(self.options.shuffle_korsica_attacks),
+            "StoreSpecialAttack": bool(self.options.shuffle_special_attacks),
+            "StoreItem": bool(self.options.shuffle_store_items),
+            "StoreChip": bool(self.options.shuffle_chips),
+            "AllowSell": bool(self.options.allow_selling_in_store)
         }
 
         self.export_location_json()

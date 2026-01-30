@@ -1,5 +1,3 @@
-UEHelpers = require "UEHelpers"
-
 InventoryItem = {}
 
 ---@param path string
