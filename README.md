@@ -33,7 +33,7 @@ To connect to a server for the first time, start a new save file and skip the cu
 
 Once you are in Track 1, open the console by pressing F10.
 
-You can change either of these keys by modifying the `local KeysToAdd` in `...\ue4ss\Mods\ConsoleEnablerMod\main.lua`.
+You can change the key by modifying the `local KeysToAdd` in `...\ue4ss\Mods\ConsoleEnablerMod\main.lua`.
 
 Type the command `connect [address:host] [player] [password]?` in the console, and wait until you see either `ConnectSlot success!` or `ConnectSlot refused` in the separate console window.
 
