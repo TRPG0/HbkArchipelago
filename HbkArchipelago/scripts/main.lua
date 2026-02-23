@@ -1,5 +1,5 @@
 ---@type string
-HbkModVersion = "0.2.0"
+HbkModVersion = "0.2.1"
 print("HbkArchipelago " .. HbkModVersion .. "\n")
 
 dkjson = require "dkjson"
@@ -60,6 +60,14 @@ do
         end
     else
         print("Could not load location ID table! Aborting\n")
+        return
+    end
+end
+
+do 
+    if HbkMainExecutableDirectory.Mods.HbkArchipelago.save == nil then
+        print("Could not find save folder!\n")
+        print("Aborting!\n")
         return
     end
 end

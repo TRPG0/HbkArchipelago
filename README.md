@@ -12,9 +12,11 @@ The Xbox Game Pass version is currently **not** supported.
 
 2. Open the folder where Hi-Fi RUSH is installed. 
     - Steam: Right click Hi-Fi RUSH, click Manage, then click Browse local files.
+    - Xbox: Right click Hi-Fi RUSH, click Manage, click Files, click Browse, then open the folder for Hi-Fi RUSH.
 
 3. Go to the folder where the game's main executable is located.
     - Steam: `...\Hi-Fi RUSH\Hibiki\Binaries\Win64`
+    - Xbox: `...\Hi-Fi RUSH\Content\Hibiki\Binaries\WinGDK`
 
 4. Extract the files from the zip package into the folder.
 
@@ -26,6 +28,11 @@ Steam (`...\Hi-Fi RUSH\Hibiki\Binaries\Win64`):
 - `Hi-Fi RUSH.exe`
 - `OpenImageDenoise.dll`
 - `tbb12.dll`
+
+Xbox (`...\Hi-Fi RUSH\Content\Hibiki\Binaries\WinGDK`):
+- `Hi-Fi RUSH.exe`
+- `GameChat2.dll`
+- `XCurl.dll`
 
 ## Connecting to a server
 

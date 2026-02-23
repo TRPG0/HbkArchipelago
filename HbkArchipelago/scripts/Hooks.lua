@@ -65,6 +65,13 @@ Hooks.Receive_OnPostStartPlayHook = {
                 return
             end
 
+            local NotMatch = SaveData:CheckIndexMatch()
+            if NotMatch and Multiworld:IsConnected() then
+                print("Index mismatch! Resyncing\n")
+                SaveData:Load()
+                Multiworld:Sync()
+            end
+
             Inventory.ShouldCheckForItemObjects = Util.LevelHasItemObjects()
 
             Inventory.SetItemObjectAmounts()

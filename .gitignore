@@ -1,6 +1,7 @@
 HbkArchipelago/lua-apclientpp.lua
 HbkArchipelago/save/*
-package/
+package_steam/
+package_xbox/
 __pycache__
 copytorepo.py
 package.py

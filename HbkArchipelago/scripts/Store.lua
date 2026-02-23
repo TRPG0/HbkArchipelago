@@ -844,8 +844,8 @@ function Store.CheckLocationsAfterStoreClosed()
 
                             --print("LocationStr " .. LocationStr .. "\n")
 
-                            if LocationIdTable[LocationStr] and not Util.TableContains(SaveData.Checked, LocationStr) then
-                                Multiworld:CheckLocation(LocationStr)
+                            if LocationIdTable[LocationStr] then
+                                Multiworld:CheckLocation(LocationStr, Util.TableContains(SaveData.Checked, LocationStr))
                             end
                         end
                     end

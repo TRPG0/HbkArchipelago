@@ -65,14 +65,13 @@ function Multiworld:Connect(host, slot, password)
             Multiworld.RequestStoreScouts()
             Util.DoRandomizerFirstTimeSetup()
             SaveData:Save()
-        else
-            if HbkModVersion ~= slot_data.Version then
-                print("Versions do not match! (" .. HbkModVersion " ~= " ..  slot_data.Version .. ")\n")
-                print("Some things may not work as expected!\n")
-            end
-            if SaveData.Seed ~= ap:get_seed() then
-                print("Seed does not match! (" .. SaveData.Seed " ~= " .. ap:get_seed() .. ")\n")
-            end
+        end
+        if HbkModVersion ~= slot_data.Version then
+            print("Versions do not match! (" .. HbkModVersion .. " ~= " ..  slot_data.Version .. ")\n")
+            print("Some things may not work as expected!\n")
+        end
+        if SaveData.Seed ~= ap:get_seed() then
+            print("Seed does not match! (" .. SaveData.Seed .. " ~= " .. ap:get_seed() .. ")\n")
         end
     end)
 
@@ -125,7 +124,7 @@ function Multiworld:Connect(host, slot, password)
     --set_retrieved_handler
     --set_set_reply_handler
 
-    LoopAsync(1000, function ()
+    LoopAsync(33, function ()
         if ap then
             ap:poll()
             if LocWaiting ~= {} then
@@ -165,13 +164,23 @@ function Multiworld:SetCanGetItem(bool)
 end
 
 ---@param Location string
-function Multiworld:CheckLocation(Location)
+---@param Silent boolean
+function Multiworld:CheckLocation(Location, Silent)
+    Silent = Silent or false
     if LocationIdTable[Location] then
         Util.AddToTableIfNotHas(LocWaiting, LocationIdTable[Location])
         Util.AddToTableIfNotHas(SaveData.Checked, Location)
-        print("Checking location " .. Location .. " | " .. tostring(LocationIdTable[Location]) ..  "\n")
+        if not Silent then
+            print("Checking location " .. Location .. " | " .. tostring(LocationIdTable[Location]) ..  "\n")
+        end
     else
         print("No ID found for location \"" .. Location .. "\"\n")
+    end
+end
+
+function Multiworld:CheckAllLocationsAgain()
+    for _, v in pairs(SaveData.Checked) do
+        Util.AddToTableIfNotHas(LocWaiting, LocationIdTable[v])
     end
 end
 
@@ -184,6 +193,14 @@ function Multiworld:LevelCompleted(SequenceName, LevelNum)
     if SaveData:IsAllLevelsCompleted() then
         Util.AddToTableIfNotHas(SaveData.UnlockedLevels, 12)
         print("Track 12 unlocked!\n")
+    end
+end
+
+function Multiworld:Sync()
+    if ap then
+        ExecuteAsync(function ()
+            ap:Sync()
+        end)
     end
 end
 

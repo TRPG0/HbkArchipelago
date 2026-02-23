@@ -1,6 +1,8 @@
 RegisterConsoleCommandHandler("connect", function (Cmd, CommandParts, Ar)
     if Multiworld:IsConnected() then
         print("Already connected.\n")
+    elseif not Util.IsSaveGameSlotLoaded() then
+        print("Save slot is not loaded.\n")
     elseif #CommandParts == 2 then
         ExecuteAsync(function ()
             Multiworld:Connect(CommandParts[1], CommandParts[2], "")
@@ -26,6 +28,19 @@ RegisterConsoleCommandHandler("disconnect", function (Cmd, CommandParts, Ar)
         Multiworld:Disconnect()
     else
         print("Not connected.\n")
+    end
+    return true
+end)
+
+RegisterConsoleCommandHandler("resend", function (Cmd, CommandParts, Ar)
+    if not SaveData.IsCurrentFileRandomized then
+        print("Save slot is not randomized.\n")
+    else
+        if Multiworld:IsConnected() then
+            Multiworld:CheckAllLocationsAgain()
+        else
+            print("Not connected.\n")
+        end
     end
     return true
 end)

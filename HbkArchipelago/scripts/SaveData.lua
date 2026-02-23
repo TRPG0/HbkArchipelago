@@ -264,6 +264,27 @@ function SaveData:Load(FileName)
 end
 
 ---@param FileName string?
+---@return boolean|nil
+function SaveData:CheckIndexMatch(FileName)
+    FileName = FileName or SaveData.GetCurrentSlotName()
+    local path = SaveData.GetFilePath(FileName)
+    local file = io.open(path, "r")
+    local result = true
+    if file then
+        local decode, pos, err = dkjson.decode(file:read("a"), 1, nil)
+        if err then
+            print("Error while trying to load save data: " .. err)
+        else
+            result = decode.Index < SaveData.Index
+        end
+        io.close(file)
+        return result
+    else
+        return nil
+    end
+end
+
+---@param FileName string?
 function SaveData:Delete(FileName)
     FileName = FileName or SaveData.GetCurrentSlotName()
     if SaveData:FileExists(FileName) then
