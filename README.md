@@ -6,8 +6,6 @@ Special thanks to @akmubi for their work on [hibiki-bootstrap](https://github.co
 
 ## How to install
 
-The Xbox Game Pass version is currently **not** supported.
-
 1. Download the zip package from the releases.
 
 2. Open the folder where Hi-Fi RUSH is installed. 
