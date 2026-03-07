@@ -127,7 +127,7 @@ function Multiworld:Connect(host, slot, password)
     LoopAsync(33, function ()
         if ap then
             ap:poll()
-            if LocWaiting ~= {} then
+            if #LocWaiting > 0 then
                 ap:LocationChecks(LocWaiting)
                 LocWaiting = {}
             end
@@ -164,7 +164,7 @@ function Multiworld:SetCanGetItem(bool)
 end
 
 ---@param Location string
----@param Silent boolean
+---@param Silent boolean?
 function Multiworld:CheckLocation(Location, Silent)
     Silent = Silent or false
     if LocationIdTable[Location] then
