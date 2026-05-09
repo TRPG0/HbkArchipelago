@@ -194,6 +194,7 @@ function Multiworld:LevelCompleted(SequenceName, LevelNum)
         Util.AddToTableIfNotHas(SaveData.UnlockedLevels, 12)
         print("Track 12 unlocked!\n")
     end
+    SaveData:Save()
 end
 
 function Multiworld:Sync()

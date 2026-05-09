@@ -177,6 +177,15 @@ function SaveData:Save(FileName)
     ExecuteAsync(function ()
         FileName = FileName or SaveData.GetCurrentSlotName()
         local path = SaveData.GetFilePath(FileName)
+
+        if SaveData:FileExists(FileName) then
+            local backup = io.open(SaveData.GetFilePath(FileName .. "_backup"), "w")
+            if backup then
+                backup:write(io.open(path, "r"):read("a"))
+                backup:close()
+            end
+        end
+
         local file = io.open(path, "w")
         if file then
             file:write(dkjson.encode({
