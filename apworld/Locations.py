@@ -198,7 +198,7 @@ location_list: List[HbkLocation] = [
     HbkLocation("Track 3: Broken Piece of a Health Tank", Regions.t3, HbkLocationType.Collectible, "St03/LifeTankPieceItem_BP"),
     HbkLocation("Track 3: Broken Armstrong Circuit #3", Regions.t3, HbkLocationType.Collectible, "St03/CircuitItem_BP3"),
     HbkLocation("Track 3: VLog \"R&D Service Log: Part 2\"", Regions.t3, HbkLocationType.VLog, "VLog0120_BP"),
-    HbkLocation("Track 3: Electric Reverb Core Piece #1", Regions.t3, HbkLocationType.Collectible, "St03/ReverbPieceItem_BP2_2"), #this might be incorrect
+    HbkLocation("Track 3: Electric Reverb Core Piece #1", Regions.t3, HbkLocationType.Collectible, "St03/ReverbPieceItem_BP2_2"),
     HbkLocation("Track 3: Graffiti #1 (Flowers)", Regions.t3, HbkLocationType.Graffiti, ""),
     HbkLocation("Track 3: VLog \"R&D Service Log: Part 3\"", Regions.t3, HbkLocationType.VLog, "VLog0130_BP"),
     HbkLocation("Track 3: Life Gauge Piece #1", Regions.t3, HbkLocationType.Collectible, "St03/np0600_BP_2"),
@@ -213,7 +213,7 @@ location_list: List[HbkLocation] = [
     HbkLocation("Track 3: Electric Reverb Core Piece #2", Regions.t3, HbkLocationType.Collectible, "St03/ReverbPieceItem_BP_2"),
     HbkLocation("Track 3: Unlock Parry", Regions.t3, HbkLocationType.Ability, ""),
     HbkLocation("Track 3: Broken Armstrong Circuit #6", Regions.t3, HbkLocationType.Collectible, "St03/CircuitItem_BP4"),
-    HbkLocation("Track 3: VLog \"Offensive Capabilites Test\"", Regions.t3, HbkLocationType.VLog, "VLog0190_BP"),
+    HbkLocation("Track 3: VLog \"Offensive Capabilities Test\"", Regions.t3, HbkLocationType.VLog, "VLog0190_BP"),
     HbkLocation("Track 3: Graffiti #3 (Zanzo)", Regions.t3, HbkLocationType.Graffiti, ""),
     HbkLocation("Track 3: VLog \"Barrier Umbrella Test\"", Regions.t3, HbkLocationType.VLog, "VLog0200_BP"),
     HbkLocation("Track 3: Life Gauge Piece #2", Regions.t3, HbkLocationType.Collectible, "St03/LifeCoreItem_BP1"),
@@ -239,7 +239,7 @@ location_list: List[HbkLocation] = [
     HbkLocation("Track 4: Life Gauge Piece #2", Regions.t4, HbkLocationType.Collectible, "St04/LifeCoreItem_BP2"),
     HbkLocation("Track 4: Broken Armstrong Circuit #5", Regions.t4, HbkLocationType.Collectible, "St04/CircuitItem_BP5"),
     HbkLocation("Track 4: Broken Armstrong Circuit #6", Regions.t4, HbkLocationType.Collectible, "St04/CircuitItem_BP6"),
-    HbkLocation("Track 4: VLog \"Development Mindfulness Checklist\"", Regions.t4, HbkLocationType.VLog, ""),
+    HbkLocation("Track 4: VLog \"Development Mindfulness Checklist\"", Regions.t4, HbkLocationType.VLog, "VLog0250_BP"),
     HbkLocation("Track 4: Broken Piece of a Health Tank #2", Regions.t4, HbkLocationType.Collectible, "St04/LifeTankPieceItem_BP2"),
     HbkLocation("Track 4: Life Gauge Piece #3", Regions.t4, HbkLocationType.Collectible, "St04/LifeCoreItem_BP3"),
     HbkLocation("Track 4: Completed", Regions.t4, HbkLocationType.TrackComplete, "cs0430_00"),
@@ -257,10 +257,10 @@ location_list: List[HbkLocation] = [
     HbkLocation("Track 5: VLog \"Poem by SCR-UB\"", Regions.t5, HbkLocationType.VLog, "VLog0290_BP_2"),
     HbkLocation("Track 5: Rock Comic", Regions.t5, HbkLocationType.Collectible, "St05/RockComic_C_BP_2"),
     HbkLocation("Track 5: VLog \"Vandelay Game Studios?\"", Regions.t5, HbkLocationType.VLog, "VLog0300_BP_2"),
-    HbkLocation("Track 5: Life Gauge Piece #2", Regions.t5, HbkLocationType.Collectible, "St05/LifeCoreItem_BP3_4"), #this might be incorrect
+    HbkLocation("Track 5: Life Gauge Piece #2", Regions.t5, HbkLocationType.Collectible, "St05/LifeCoreItem_BP3_4"),
     HbkLocation("Track 5: Broken Armstrong Circuit #4", Regions.t5, HbkLocationType.Collectible, "St05/CircuitItem_BP5_2"),
     HbkLocation("Track 5: Electric Reverb Core Piece #2", Regions.t5, HbkLocationType.Collectible, "St05/ReverbPieceItem_BP2_8"),
-    HbkLocation("Track 5: Broken Armstrong Circuit #5", Regions.t5, HbkLocationType.Collectible, "St05/CircuitItem_BP6_8"), #this might be incorrect
+    HbkLocation("Track 5: Broken Armstrong Circuit #5", Regions.t5, HbkLocationType.Collectible, "St05/CircuitItem_BP6_8"),
     HbkLocation("Track 5: VLog \"Regarding Wing 1 Layout Complaints\"", Regions.t5, HbkLocationType.VLog, "VLog0310_BP_2"),
     HbkLocation("Track 5: Broken Armstrong Circuit #6", Regions.t5, HbkLocationType.Collectible, "St05/CircuitItem_BP7_5"),
     HbkLocation("Track 5: Broken Armstrong Circuit #7", Regions.t5, HbkLocationType.Collectible, "St05/CircuitItem_BP8_2"),
@@ -272,7 +272,7 @@ location_list: List[HbkLocation] = [
 
     HbkLocation("Track 6: Broken Armstrong Circuit", Regions.t6, HbkLocationType.Collectible, "St05b/CircuitItem_BP_2"),
     HbkLocation("Track 6: Graffiti (L.I.F.T.)", Regions.t6, HbkLocationType.Graffiti, ""),
-    HbkLocation("Track 6: VLog \"L.I.F.T. Construction Heads-up\"", Regions.t6, HbkLocationType.VLog, ""),
+    HbkLocation("Track 6: VLog \"L.I.F.T. Construction Heads-up\"", Regions.t6, HbkLocationType.VLog, "VLog0340_BP_2"),
     HbkLocation("Track 6: Completed", Regions.t6, HbkLocationType.TrackComplete, "cs0555_00"),
 
     HbkLocation("Track 7: VLog \"Platform Construction Note\"", Regions.t7, HbkLocationType.VLog, "VLog0350_BP_2"),
@@ -285,7 +285,7 @@ location_list: List[HbkLocation] = [
     HbkLocation("Track 7: Broken Armstrong Circuit #3", Regions.t7, HbkLocationType.Collectible, "St06/CircuitItem_BP3_2"),
     HbkLocation("Track 7: Broken Armstrong Circuit #4", Regions.t7, HbkLocationType.Collectible, "St06/CircuitItem_BP4"),
     HbkLocation("Track 7: VLog \"Too Many Rooms\"", Regions.t7, HbkLocationType.VLog, "VLog0360_BP_2"),
-    HbkLocation("Track 7: Life Gauge Piece #3", Regions.t7, HbkLocationType.Collectible, "St06/LifeCoreItem_BP2_2"), #this might be incorrect
+    HbkLocation("Track 7: Life Gauge Piece #3", Regions.t7, HbkLocationType.Collectible, "St06/LifeCoreItem_BP2_2"),
     HbkLocation("Track 7: Broken Armstrong Circuit #5", Regions.t7, HbkLocationType.Collectible, "St06/CircuitItem_BP5"),
     HbkLocation("Track 7: SPECTRA Challenge Room", Regions.t7, HbkLocationType.SPECTRA, ""),
     HbkLocation("Track 7: VLog \"Suspicious Doors?\"", Regions.t7, HbkLocationType.VLog, "VLog0370_BP_2"),
@@ -299,7 +299,7 @@ location_list: List[HbkLocation] = [
     HbkLocation("Track 7: VLog \"Depressed Buttons\"", Regions.t7, HbkLocationType.VLog, "VLog0400_BP_2"),
     HbkLocation("Track 7: Graffiti #3 (Lasers)", Regions.t7, HbkLocationType.Graffiti, ""),
     HbkLocation("Track 7: Broken Armstrong Circuit #8", Regions.t7, HbkLocationType.Collectible, "St06/CircuitItem_BP8"),
-    HbkLocation("Track 7: VLog \"Food Delivery Warning\"", Regions.t7, HbkLocationType.VLog, ""),
+    HbkLocation("Track 7: VLog \"Food Delivery Warning\"", Regions.t7, HbkLocationType.VLog, "VLog_0410_BP_2"),
     HbkLocation("Track 7: Completed", Regions.t7, HbkLocationType.TrackComplete, "cs0625_00"),
 
     HbkLocation("Track 8: VLog \"Armstrong Festival Marketing?\"", Regions.t8, HbkLocationType.VLog, "VLog0430_BP_2"),
@@ -375,7 +375,7 @@ location_list: List[HbkLocation] = [
     HbkLocation("Track 10: Graffiti #3 (Roquefort)", Regions.t10, HbkLocationType.Graffiti, ""),
     HbkLocation("Track 10: Electric Reverb Core Piece", Regions.t10, HbkLocationType.Collectible, "St10/ReverbPieceItem_BP_2"),
     HbkLocation("Track 10: Graffiti #4 (Kale)", Regions.t10, HbkLocationType.Graffiti, ""),
-    HbkLocation("Track 10: VLog \"Roquefort Meeting Prep\"", Regions.t10, HbkLocationType.VLog, "Inventory.File.VLog.0700"),
+    HbkLocation("Track 10: VLog \"Roquefort Meeting Prep\"", Regions.t10, HbkLocationType.VLog, "VLog0700_BP_2"),
     HbkLocation("Track 10: Broken Armstrong Circuit #6", Regions.t10, HbkLocationType.Collectible, "St10/CircuitItem_BP6"),
     HbkLocation("Track 10: Completed", Regions.t10, HbkLocationType.TrackComplete, "cs1040_00"),
 

@@ -7,6 +7,7 @@ Store.AttacksChai = {
         InventoryTag = {TagName = FName("Inventory.Combo.XYXXX")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Tune Up | PlayerItem
@@ -15,6 +16,7 @@ Store.AttacksChai = {
         InventoryTag = {TagName = FName("Inventory.Combo.XX-XXX")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Stomp Box | PlayerItem
@@ -23,6 +25,7 @@ Store.AttacksChai = {
         InventoryTag = {TagName = FName("Inventory.Combo.YXY")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Arpeggio Stab | PlayerItem
@@ -31,6 +34,7 @@ Store.AttacksChai = {
         InventoryTag = {TagName = FName("Inventory.Combo.XXYYY")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Pickup Crash | PlayerItem
@@ -39,6 +43,7 @@ Store.AttacksChai = {
         InventoryTag = {TagName = FName("Inventory.Combo.YYX")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Harmonic Beam | PlayerItem
@@ -47,6 +52,7 @@ Store.AttacksChai = {
         InventoryTag = {TagName = FName("Inventory.Combo.AirXYYY")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Compressor Slam | PlayerItem
@@ -55,6 +61,7 @@ Store.AttacksChai = {
         InventoryTag = {TagName = FName("Inventory.Combo.AirXYXY")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Shred | PlayerItem
@@ -63,6 +70,7 @@ Store.AttacksChai = {
         InventoryTag = {TagName = FName("Inventory.Combo.XmY")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Staccato Launch | PlayerItem
@@ -71,6 +79,7 @@ Store.AttacksChai = {
         InventoryTag = {TagName = FName("Inventory.Combo.C-X")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Gain Tornado | PlayerItem
@@ -79,6 +88,7 @@ Store.AttacksChai = {
         InventoryTag = {TagName = FName("Inventory.Combo.C-Y")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Quick Beat Hit | PlayerItem
@@ -87,6 +97,7 @@ Store.AttacksChai = {
         InventoryTag = {TagName = FName("Inventory.Combo.Q-X")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Steal Counter | PlayerItem
@@ -95,6 +106,7 @@ Store.AttacksChai = {
         InventoryTag = {TagName = FName("Inventory.Combo.Q-Y")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Magnet Backstab | PlayerItem
@@ -103,6 +115,7 @@ Store.AttacksChai = {
         InventoryTag = {TagName = FName("Inventory.Ability.MagnetBackstab")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Air Parry | PlayerItem
@@ -111,6 +124,7 @@ Store.AttacksChai = {
         InventoryTag = {TagName = FName("Inventory.Ability.AirParry")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Directional Parry | PlayerItem
@@ -119,6 +133,7 @@ Store.AttacksChai = {
         InventoryTag = {TagName = FName("Inventory.Ability.DirectionalParry")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     }
 }
@@ -130,6 +145,7 @@ Store.AttacksPeppermint = {
         InventoryTag = {TagName = FName("Inventory.Partner.JamCombo.PG01")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Master Blaster | PlayerItem
@@ -138,6 +154,7 @@ Store.AttacksPeppermint = {
         InventoryTag = {TagName = FName("Inventory.Partner.JamCombo.PA01")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Cannon Spike | PlayerItem
@@ -146,6 +163,7 @@ Store.AttacksPeppermint = {
         InventoryTag = {TagName = FName("Inventory.Partner.Charge.P01")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Kick Shot | PlayerItem
@@ -154,6 +172,7 @@ Store.AttacksPeppermint = {
         InventoryTag = {TagName = FName("Inventory.Partner.Counter.P01")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     }
 }
@@ -165,6 +184,7 @@ Store.AttacksMacaron = {
         InventoryTag = {TagName = FName("Inventory.Partner.JamCombo.MG01")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --High Strung | PlayerItem
@@ -173,6 +193,7 @@ Store.AttacksMacaron = {
         InventoryTag = {TagName = FName("Inventory.Partner.JamCombo.MA01")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Gravity Well | PlayerItem
@@ -181,6 +202,7 @@ Store.AttacksMacaron = {
         InventoryTag = {TagName = FName("Inventory.Partner.Charge.M01")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Love Tap | PlayerItem
@@ -189,6 +211,7 @@ Store.AttacksMacaron = {
         InventoryTag = {TagName = FName("Inventory.Partner.Counter.M01")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     }
 }
@@ -200,6 +223,7 @@ Store.AttacksKorsica = {
         InventoryTag = {TagName = FName("Inventory.Partner.JamCombo.KG01")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Tornado Lift | PlayerItem
@@ -208,6 +232,7 @@ Store.AttacksKorsica = {
         InventoryTag = {TagName = FName("Inventory.Partner.JamCombo.KA01")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Korsica Typhoon | PlayerItem
@@ -216,6 +241,7 @@ Store.AttacksKorsica = {
         InventoryTag = {TagName = FName("Inventory.Partner.Charge.K01")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --High Alert | PlayerItem
@@ -224,6 +250,7 @@ Store.AttacksKorsica = {
         InventoryTag = {TagName = FName("Inventory.Partner.Counter.K01")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     }
 }
@@ -235,6 +262,7 @@ Store.SpecialAttacks = {
         InventoryTag = {TagName = FName("Inventory.SpecialAttack.020")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Pick Me Up! | PlayerItem
@@ -243,6 +271,7 @@ Store.SpecialAttacks = {
         InventoryTag = {TagName = FName("Inventory.SpecialAttack.030")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Pick Slide | PlayerItem
@@ -251,6 +280,7 @@ Store.SpecialAttacks = {
         InventoryTag = {TagName = FName("Inventory.SpecialAttack.040")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --High Pitch Punch | PlayerItem
@@ -259,6 +289,7 @@ Store.SpecialAttacks = {
         InventoryTag = {TagName = FName("Inventory.SpecialAttack.050")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Air Guitar | PlayerItem
@@ -267,6 +298,7 @@ Store.SpecialAttacks = {
         InventoryTag = {TagName = FName("Inventory.SpecialAttack.060")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Rip and Tear | PlayerItem
@@ -275,6 +307,7 @@ Store.SpecialAttacks = {
         InventoryTag = {TagName = FName("Inventory.SpecialAttack.080")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Double Riff | PlayerItem
@@ -283,6 +316,7 @@ Store.SpecialAttacks = {
         InventoryTag = {TagName = FName("Inventory.SpecialAttack.310")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Barrier Wall | PlayerItem
@@ -291,6 +325,7 @@ Store.SpecialAttacks = {
         InventoryTag = {TagName = FName("Inventory.SpecialAttack.330")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Twin Assault | PlayerItem
@@ -299,6 +334,7 @@ Store.SpecialAttacks = {
         InventoryTag = {TagName = FName("Inventory.SpecialAttack.340")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Steal the Show | PlayerItem
@@ -307,6 +343,7 @@ Store.SpecialAttacks = {
         InventoryTag = {TagName = FName("Inventory.SpecialAttack.350")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Holo-Chai | PlayerItem
@@ -315,6 +352,7 @@ Store.SpecialAttacks = {
         InventoryTag = {TagName = FName("Inventory.SpecialAttack.360")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Hibiki! | PlayerItem
@@ -323,6 +361,7 @@ Store.SpecialAttacks = {
         InventoryTag = {TagName = FName("Inventory.SpecialAttack.610")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Overdrive Slash | PlayerItem
@@ -331,6 +370,7 @@ Store.SpecialAttacks = {
         InventoryTag = {TagName = FName("Inventory.SpecialAttack.620")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --808-Gigawatt Cat-attack | PlayerItem
@@ -339,6 +379,7 @@ Store.SpecialAttacks = {
         InventoryTag = {TagName = FName("Inventory.SpecialAttack.910")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     }
 }
@@ -350,6 +391,7 @@ Store.Items = {
         InventoryTag = {TagName = FName("Inventory.Variable.LifeUp")},
         InventoryCategory = 3,
         ScoutCount = 6,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Electric Reverb Core | LatestVariableItem
@@ -358,6 +400,7 @@ Store.Items = {
         InventoryTag = {TagName = FName("Inventory.Variable.GaugeUp")},
         InventoryCategory = 3,
         ScoutCount = 3,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Health Tank | LatestVariableItem
@@ -366,6 +409,7 @@ Store.Items = {
         InventoryTag = {TagName = FName("Inventory.Variable.LifeTank")},
         InventoryCategory = 3,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Additional Chip Slot | VariableItem
@@ -374,6 +418,7 @@ Store.Items = {
         InventoryTag = {TagName = FName("Inventory.Variable.ChipSlot")},
         InventoryCategory = 2,
         ScoutCount = 4,
+        ScoutRules = nil,
         DescriptionText = nil
     },
     --Special Attack Slot | VariableItem
@@ -382,6 +427,7 @@ Store.Items = {
         InventoryTag = {TagName = FName("Inventory.Variable.SpAttackSlot")},
         InventoryCategory = 2,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     }
 }
@@ -393,6 +439,11 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.CoolTimeP")},
         InventoryCategory = 1,
         ScoutCount = 3,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(2), "Must complete Track 2 before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --Health Kick | PlayerItem
@@ -401,6 +452,11 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.RecoveryUp")},
         InventoryCategory = 1,
         ScoutCount = 3,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(2), "Must complete Track 2 before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --Battery Magnet | PlayerItem
@@ -409,6 +465,11 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.BatteryUp")},
         InventoryCategory = 1,
         ScoutCount = 3,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(2), "Must complete Track 2 before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --Rhythm Meter Rush | PlayerItem
@@ -417,6 +478,11 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.RhythmMeterUp")},
         InventoryCategory = 1,
         ScoutCount = 3,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(2), "Must complete Track 2 before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --Parry Health | PlayerItem
@@ -425,6 +491,11 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.ParryHealth")},
         InventoryCategory = 1,
         ScoutCount = 3,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --Parry Charge | PlayerItem
@@ -433,6 +504,11 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.ParryBattery")},
         InventoryCategory = 1,
         ScoutCount = 3,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --Invincible D-Parry | PlayerItem
@@ -441,6 +517,11 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.DirectionalParryInvincible")},
         InventoryCategory = 1,
         ScoutCount = 3,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(3) and Inventory.GetItemCount(1, "Inventory.Ability.DirectionalParry") >= 1, "Must complete Track 3 and unlock Directional Parry before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Inventory.GetItemCount(1, "Inventory.Ability.DirectionalParry") >= 1, "Must complete Track 3 and unlock Directional Parry before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Inventory.GetItemCount(1, "Inventory.Ability.DirectionalParry") >= 1, "Must complete Track 3 and unlock Directional Parry before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --Damage Rebound D-Parry | PlayerItem
@@ -449,6 +530,11 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.DirectionalParryDamage")},
         InventoryCategory = 1,
         ScoutCount = 3,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(3) and Inventory.GetItemCount(1, "Inventory.Ability.DirectionalParry") >= 1, "Must complete Track 3 and unlock Directional Parry before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Inventory.GetItemCount(1, "Inventory.Ability.DirectionalParry") >= 1, "Must complete Track 3 and unlock Directional Parry before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Inventory.GetItemCount(1, "Inventory.Ability.DirectionalParry") >= 1, "Must complete Track 3 and unlock Directional Parry before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --Combo Holder | PlayerItem
@@ -457,6 +543,11 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.ComboDurationUp")},
         InventoryCategory = 1,
         ScoutCount = 3,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --Rhythm Dodge Pull Plus | PlayerItem
@@ -465,6 +556,11 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.ItemAbsorbUp")},
         InventoryCategory = 1,
         ScoutCount = 3,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3), "Must complete Track 3 before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --Rhythm Dodge Pull Cancel | PlayerItem
@@ -473,6 +569,9 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.ItemAbsorbCancelInBattle")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(2) and Player.HasPartnerMacaron(), "Must complete Track 2 and have Macaron as a partner before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --Instant Partner Recharge | PlayerItem
@@ -481,6 +580,9 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.ForceQuickCallPartner")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(2) and Player.HasPartnerMacaron(), "Must complete Track 2 and have Macaron as a partner before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --Peppermint Shock Advantage | PlayerItem
@@ -489,6 +591,11 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.P_DownTimeUp")},
         InventoryCategory = 1,
         ScoutCount = 3,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(2) and Player.HasPartnerPeppermint(), "Must complete Track 2 and have Peppermint as a partner before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Player.HasPartnerPeppermint(), "Must complete Track 3 and have Peppermint as a partner before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Player.HasPartnerPeppermint(), "Must complete Track 3 and have Peppermint as a partner before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --Peppermint Shock Jump | PlayerItem
@@ -497,6 +604,11 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.P_ElectricEnemy")},
         InventoryCategory = 1,
         ScoutCount = 3,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(2) and Player.HasPartnerPeppermint(), "Must complete Track 2 and have Peppermint as a partner before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Player.HasPartnerPeppermint(), "Must complete Track 3 and have Peppermint as a partner before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Player.HasPartnerPeppermint(), "Must complete Track 3 and have Peppermint as a partner before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --Macaron Compatibility | PlayerItem
@@ -505,6 +617,11 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.CoolTimeM")},
         InventoryCategory = 1,
         ScoutCount = 3,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(2) and Player.HasPartnerMacaron(), "Must complete Track 2 and have Macaron as a partner before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Player.HasPartnerMacaron(), "Must complete Track 3 and have Macaron as a partner before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Player.HasPartnerMacaron(), "Must complete Track 3 and have Macaron as a partner before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --Macaron's Lucky Punch | PlayerItem
@@ -513,6 +630,11 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.M_LuckyShieldDamage")},
         InventoryCategory = 1,
         ScoutCount = 3,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(2) and Player.HasPartnerMacaron(), "Must complete Track 2 and have Macaron as a partner before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Player.HasPartnerMacaron(), "Must complete Track 3 and have Macaron as a partner before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Player.HasPartnerMacaron(), "Must complete Track 3 and have Macaron as a partner before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --Macaron's Aftershock | PlayerItem
@@ -521,6 +643,11 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.M_WaveRangeUp")},
         InventoryCategory = 1,
         ScoutCount = 3,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(2) and Player.HasPartnerMacaron(), "Must complete Track 2 and have Macaron as a partner before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Player.HasPartnerMacaron(), "Must complete Track 3 and have Macaron as a partner before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Player.HasPartnerMacaron(), "Must complete Track 3 and have Macaron as a partner before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --Korsica Compatibility | PlayerItem
@@ -529,6 +656,11 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.CoolTimeK")},
         InventoryCategory = 1,
         ScoutCount = 3,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(2) and Player.HasPartnerKorsica(), "Must complete Track 2 and have Korsica as a partner before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Player.HasPartnerKorsica(), "Must complete Track 3 and have Korsica as a partner before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Player.HasPartnerKorsica(), "Must complete Track 3 and have Korsica as a partner before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --Super High Alert | PlayerItem
@@ -537,6 +669,11 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.K_FloatingTimeUp")},
         InventoryCategory = 1,
         ScoutCount = 3,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(2) and Player.HasPartnerKorsica(), "Must complete Track 2 and have Korsica as a partner before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Player.HasPartnerKorsica(), "Must complete Track 3 and have Korsica as a partner before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Player.HasPartnerKorsica(), "Must complete Track 3 and have Korsica as a partner before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --Korsica Stun Extend | PlayerItem
@@ -545,6 +682,11 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.K_DebuffTimeUp")},
         InventoryCategory = 1,
         ScoutCount = 3,
+        ScoutRules = {
+            function () return SaveData:IsLevelCompleted(2) and Player.HasPartnerKorsica(), "Must complete Track 2 and have Korsica as a partner before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Player.HasPartnerKorsica(), "Must complete Track 3 and have Korsica as a partner before this can be purchased!" end,
+            function () return SaveData:IsLevelCompleted(3) and Player.HasPartnerKorsica(), "Must complete Track 3 and have Korsica as a partner before this can be purchased!" end
+        },
         DescriptionText = nil
     },
     --[[
@@ -554,6 +696,7 @@ Store.Chips = {
         InventoryTag = {TagName = FName("Inventory.Chip.FindingCircuit")},
         InventoryCategory = 1,
         ScoutCount = 1,
+        ScoutRules = nil,
         DescriptionText = nil
     }]]
 }
@@ -621,36 +764,19 @@ function Store.GetLocationIdsForStoreItems(ItemTable, TableToAdd)
 end
 
 ---@return string
-function Store.GetItemColorFromFlags(Flags)
-    local PROG = 1
-    local USEFUL = 2
-    local TRAP = 4
-
-    if Flags & PROG > 0 then
-        return TextColors.ItemProgression
-    elseif Flags & USEFUL > 0 then
-        return TextColors.ItemUseful
-    elseif Flags & TRAP > 0 then
-        return TextColors.ItemTrap
-    else
-        return TextColors.ItemFiller
-    end
-end
-
----@return string
 function Store.GetScoutStringFromFlags(Flags)
     local PROG = 1
     local USEFUL = 2
     local TRAP = 4
 
     if Flags & PROG > 0 then
-        return "Seems <ttd fcl=\"#" .. TextColors.ItemProgression .. "ff\">important!</>"
+        return "Seems " .. Util.ColorText(TextColors.ItemProgression, "important!")
     elseif Flags & USEFUL > 0 then
-        return "Seems <ttd fcl=\"#" .. TextColors.ItemUseful .. "ff\">pretty cool!</>"
+        return "Seems " .. Util.ColorText(TextColors.ItemUseful, "pretty cool!")
     elseif Flags & TRAP > 0 then
-        return "Seems... <ttd fcl=\"#" .. TextColors.ItemTrap .. "ff\">bad.</>"
+        return "Seems... " .. Util.ColorText(TextColors.ItemTrap, "bad.")
     else
-        return "Seems <ttd fcl=\"#" .. TextColors.ItemFiller .. "ff\">fine.</>"
+        return "Seems " .. Util.ColorText(TextColors.ItemFiller, "fine.")
     end
 end
 
@@ -659,33 +785,52 @@ function Store.AssembleStoreItemString(Info)
     local Checkmark = "\u{2713}"
 
     if Info.ScoutCount > 1 then
-        local Str = "Buy this to unlock items!\n\n"
+        local Str = "Buy this to get items!\n\n"
         for i=1,Info.ScoutCount do
             Str = Str .. tostring(i) .. ". "
 
-            local ScoutStr = Info.ProductTag.TagName:ToString() .. "=" .. tostring(i)
-
-            if Util.TableContains(SaveData.Checked, ScoutStr) then
-                Str = Str .. Checkmark
+            local RuleValue, RuleStr = true, ""
+            if Info.ScoutRules then
+                RuleValue, RuleStr = Info.ScoutRules[i]()
             end
+            if RuleValue then
+                local ScoutStr = Info.ProductTag.TagName:ToString() .. "=" .. tostring(i)
 
-            local Scout = SaveData.Scouts[ScoutStr]
+                if Util.TableContains(SaveData.Checked, ScoutStr) then
+                    Str = Str .. Checkmark
+                end
 
-            local ItemStr = "<ttd fcl=\"#" .. Store.GetItemColorFromFlags(Scout.Flags) .. "ff\">" .. Scout.ItemName .. "</>"
+                local Scout = SaveData.Scouts[ScoutStr]
 
-            local IsSelf = Scout.PlayerName == SaveData.Slot
-            local PlayerColor
-            if IsSelf then
-                PlayerColor = TextColors.PlayerSelf
+                local ItemStr = Scout.ItemName
+                if SaveData.PlayerCount == 1 then
+                    ItemStr = ItemStr .. "!"
+                end
+
+                local IsSelf = Scout.PlayerName == SaveData.Slot
+                local PlayerColor
+                if IsSelf then
+                    PlayerColor = TextColors.PlayerSelf
+                else
+                    PlayerColor = TextColors.PlayerOther
+                end
+                local PlayerStr = Util.ColorText(PlayerColor, Scout.PlayerName .. "!")
+
+                if SaveData.PlayerCount == 1 then
+                    Str = Str .. Util.ColorText(Util.GetItemColorFromFlags(Scout.Flags), ItemStr) .. " " .. Store.GetScoutStringFromFlags(Scout.Flags)
+                else
+                    Str = Str .. Util.ColorText(Util.GetItemColorFromFlags(Scout.Flags), ItemStr) .. " for " .. PlayerStr .. " " .. Store.GetScoutStringFromFlags(Scout.Flags)
+                end
+
+                if i ~= Info.ScoutCount then
+                    Str = Str .. "\n\n"
+                end
             else
-                PlayerColor = TextColors.PlayerOther
-            end
-            local PlayerStr = "<ttd fcl=\"#" .. PlayerColor .. "ff\">" .. Scout.PlayerName .. "!</>"
+                Str = Str .. Util.ColorText("808080", RuleStr)
 
-            Str = Str .. ItemStr .. " for " .. PlayerStr .. " " .. Store.GetScoutStringFromFlags(Scout.Flags)
-
-            if i ~= Info.ScoutCount then
-                Str = Str .. "\n"
+                if i ~= Info.ScoutCount then
+                    Str = Str .. "\n\n"
+                end
             end
         end
         return Str
@@ -700,7 +845,10 @@ function Store.AssembleStoreItemString(Info)
 
         local Scout = SaveData.Scouts[ScoutStr]
 
-        local ItemStr = "<ttd fcl=\"#" .. Store.GetItemColorFromFlags(Scout.Flags) .. "ff\">" .. Scout.ItemName .. "</>"
+        local ItemStr = Scout.ItemName
+        if SaveData.PlayerCount == 1 then
+            ItemStr = ItemStr .. "!"
+        end
 
         local IsSelf = Scout.PlayerName == SaveData.Slot
         local PlayerColor
@@ -709,9 +857,13 @@ function Store.AssembleStoreItemString(Info)
         else
             PlayerColor = TextColors.PlayerOther
         end
-        local PlayerStr = "<ttd fcl=\"#" .. PlayerColor .. "ff\">" .. Scout.PlayerName .. "!</>"
+        local PlayerStr = Util.ColorText(PlayerColor, Scout.PlayerName .. "!")
 
-        return Str .. "Buy this to unlock " .. ItemStr .. " for " .. PlayerStr .. "\n" .. Store.GetScoutStringFromFlags(Scout.Flags)
+        if SaveData.PlayerCount == 1 then
+            return Str .. "Buy this to get " .. Util.ColorText(Util.GetItemColorFromFlags(Scout.Flags), ItemStr) .. "\n" .. Store.GetScoutStringFromFlags(Scout.Flags)
+        else
+            return Str .. "Buy this to get " .. Util.ColorText(Util.GetItemColorFromFlags(Scout.Flags), ItemStr) .. " for " .. PlayerStr .. "\n" .. Store.GetScoutStringFromFlags(Scout.Flags)
+        end
     end
 end
 

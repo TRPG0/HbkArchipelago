@@ -42,10 +42,10 @@ Hooks.Receive_StartEventSceneHook = {
 Hooks.Receive_OnPostStartPlayHook = {
     Target = "/Script/Hibiki.HbkPlayerCharacterManager:Receive_OnPostStartPlay",
     PreCallback = function()
-        local LevelName = Util.GetCurrentLevelName()
-        print("Receive_OnPostStartPlay " .. LevelName .. "\n")
+        Util.UpdateCurrentLevelName()
+        print("Receive_OnPostStartPlay " .. Util.CurrentLevelName .. "\n")
 
-        if LevelName == "Level /Game/Hibiki/Maps/Title/Title_All.Title_All:PersistentLevel" then
+        if Util.CurrentLevelName == "Level /Game/Hibiki/Maps/Title/Title_All.Title_All:PersistentLevel" then
             SaveData:ResetToDefault()
             if Multiworld:IsConnected() then
                 Multiworld:Disconnect()
@@ -61,12 +61,16 @@ Hooks.Receive_OnPostStartPlayHook = {
         end
 
         if SaveData.IsCurrentFileRandomized then
+            if Util.GetCurrentLevelShortName() ~= "Hideout" and not Multiworld:IsConnected() then
+                Message.EnqueueCustomMessage("Not connected to an Archipelago server!")
+            end
+
             if Stage.GotoHideOutIfLevelNotUnlocked() then
                 return
             end
 
             local NotMatch = SaveData:CheckIndexMatch()
-            if NotMatch and Multiworld:IsConnected() then
+            if NotMatch and Multiworld:IsConnected() and Util.CurrentLevelName == Util.PreviousLevelName then
                 print("Index mismatch! Resyncing\n")
                 SaveData:Load()
                 Multiworld:Sync()
@@ -148,7 +152,11 @@ Hooks.OnInteractionHook = {
         ---@type AHbkInteractItemBase
         local InteractItem = self:get()
         if InteractItem:GetClass():GetSuperStruct():GetFName():ToString() == "HbkVLogItem" then
-            print("OnInteraction " .. InteractItem:GetFName():ToString() .. "\n")
+            --print("OnInteraction " .. InteractItem:GetFName():ToString() .. "\n")
+            if SaveData.IsCurrentFileRandomized and SaveData.ShuffleVLog then
+                local Name = InteractItem:GetFName():ToString()
+                Multiworld:CheckLocation(Name, Util.TableContains(SaveData.Checked, Name))
+            end
         end
     end
 }
@@ -285,6 +293,16 @@ Hooks.OnClickedToEquipmentButtonHook = {
     end
 }
 
+Hooks.OnSubMissionWidgetClosed = {
+    Target = "/Script/Hibiki.HbkNoticePopupWidgetInterface:OnFinishWidget",
+    PreCallback = function (self)
+        print("test\n")
+        ---@type UHbkItemGetPopupBaseWidget
+        local ItemGetPopup = self:get()
+        print(ItemGetPopup:GetFName():ToString())
+    end
+}
+
 ---@param Hook Hook
 local function RegisterSingleHook(Hook)
     if Hook.PreId ~= nil or Hook.PostId ~= nil then
@@ -373,6 +391,18 @@ Hooks.BPPushTextNewLineHook = {
     end
 }
 
+---@type BPHook
+Hooks.BPSubMissionPopupHook = {
+    ClassTarget = "/Script/Hibiki.HbkCountPopupWidget",
+    ScriptTarget = "/Game/Hibiki/Blueprints/HUD/Popup/SubMisstionPopup_UI.SubMisstionPopup_UI_C:WidgetAnimationEvt_PopupOut_Anim_K2Node_WidgetAnimationEvent_0",
+    Callback = function (self)
+        --print("Sub mission popup out!\n")
+        if not Message.IsNextMessageCustom() then
+            Message.ResetTitle()
+        end
+    end
+}
+
 ---@param BPHook BPHook
 local function RegisterSingleBPHook(BPHook)
     if BPHook.PreID ~= nil or BPHook.PostId ~= nil then
@@ -400,10 +430,12 @@ end
 
 function Hooks:RegisterAllBPHooks()
     --RegisterSingleBPHook(Hooks.BPPushTextNewLineHook)
+    RegisterSingleBPHook(Hooks.BPSubMissionPopupHook)
 end
 
 function Hooks:UnregisterAllBPHooks()
     --UnregisterSingleBPHook(Hooks.BPPushTextNewLineHook)
+    UnregisterSingleBPHook(Hooks.BPSubMissionPopupHook)
 end
 
 return Hooks

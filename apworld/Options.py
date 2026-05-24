@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from Options import Toggle, DefaultOnToggle, PerGameCommonOptions, StartInventoryPool, Visibility
+from Options import Toggle, DefaultOnToggle, Choice, PerGameCommonOptions, StartInventoryPool, Visibility
 
 
 class AttackChaiShuffle(Toggle):
@@ -37,11 +37,14 @@ class SpecialAttackShuffle(Toggle):
     display_name = "Shuffle Special Attacks"
 
 
-class StoreItemShuffle(Toggle):
+class StoreItemShuffle(Choice):
     """
     Shuffles the items from the store into the multiworld.
     """
     display_name = "Shuffle Store Items"
+    option_disabled = 0
+    option_enabled = 1
+    option_enabled_except_special_attack_slot = 2
 
 
 class ChipShuffle(Toggle):
@@ -63,6 +66,15 @@ class AllowSell(DefaultOnToggle):
     visibility = Visibility.none
 
 
+class VLogShuffle(Toggle):
+    """
+    Shuffles the VLogs scattered around Vandelay campus into the multiworld.
+
+    VLogs in the SPECTRA Hub Room and Vandelay Gameworks areas are not randomized.
+    """
+    display_name = "Shuffle VLogs"
+
+
 @dataclass
 class HbkOptions(PerGameCommonOptions):
     shuffle_chai_attacks: AttackChaiShuffle
@@ -73,5 +85,6 @@ class HbkOptions(PerGameCommonOptions):
     shuffle_store_items: StoreItemShuffle
     shuffle_chips: ChipShuffle
     allow_selling_in_store: AllowSell
+    shuffle_vlogs: VLogShuffle
 
     start_inventory_from_pool: StartInventoryPool

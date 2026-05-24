@@ -1,9 +1,11 @@
 ---@type string
-HbkModVersion = "0.2.3"
+HbkModVersion = "0.3.0"
 print("HbkArchipelago " .. HbkModVersion .. "\n")
 
 dkjson = require "dkjson"
 UEHelpers = require "UEHelpers"
+ObjectCache = require "ObjectCache"
+Util = require "Util"
 
 Ability = require "Ability"
 AbilityTags = require "AbilityTags"
@@ -13,8 +15,9 @@ Hooks = require "Hooks"
 Inventory = require "Inventory"
 InventoryItem = require "InventoryItem"
 Item = require "Item"
+Message = require "Message"
 Multiworld = require "Multiworld"
-ObjectCache = require "ObjectCache"
+Player = require "Player"
 SaveData = require "SaveData"
 Sequence = require "Sequence"
 SkillTags = require "SkillTags"
@@ -22,7 +25,6 @@ Stage = require "Stage"
 Store = require "Store"
 Talk = require "Talk"
 TextColors = require "TextColors"
-Util = require "Util"
 
 print("Registering console commands\n")
 require "Commands"
@@ -87,7 +89,7 @@ do
 
     if string.len(TextColors.ItemProgression) ~= 6 or not string.match(TextColors.ItemProgression, pattern) then
         print("ItemProgression does not appear to be a valid hex color. Using default instead\n")
-        TextColors.ItemProgression = "fafad2"
+        TextColors.ItemProgression = "af99ef"
     end
 
     if string.len(TextColors.ItemUseful) ~= 6 or not string.match(TextColors.ItemUseful, pattern) then
@@ -104,15 +106,15 @@ do
         print("ItemFiller does not appear to be a valid hex color. Using default instead\n")
         TextColors.ItemFiller = "00eeee"
     end
+
+    if string.len(TextColors.Location) ~= 6 or not string.match(TextColors.Location, pattern) then
+        print("Location does not appear to be a valid hex color. Using default instead\n")
+        TextColors.Location = "00ff7f"
+    end
 end
 
 Hooks:RegisterAllHooks()
 Hooks:RegisterAllBPHooks()
-
-NotifyOnNewObject("/Script/Hibiki.HbkVLogItem", function (NewObject)
-    ---@cast NewObject AHbkVLogItem
-    print("NewObject HbkVLogItem " .. NewObject:GetFName():ToString() .. "\n")
-end)
 
 ---@type boolean
 IsLoadingSaveSlot = false

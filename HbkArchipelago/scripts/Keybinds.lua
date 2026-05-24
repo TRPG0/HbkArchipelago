@@ -5,7 +5,7 @@ print("Ctrl + ONE: Print current SaveData\n")
 
 RegisterKeyBind(Key.TWO, { ModifierKey.CONTROL }, function ()
     print(SaveData.GetCurrentSlotName())
-    print(Util.GetCurrentLevelName())
+    print(Util.CurrentLevelName)
     print(Util.GetCurrentLevelShortName())
 end)
 print("Ctrl + TWO: Print save slot name, level name, short name\n")

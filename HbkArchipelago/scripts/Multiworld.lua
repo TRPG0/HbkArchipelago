@@ -6,7 +6,7 @@ local LocWaiting = {}
 ---@type boolean
 Multiworld.CanGetItem = true
 
----@type table<string>
+---@type table<table>
 local ItemWaiting = {}
 
 local AP = require "lua-apclientpp"
@@ -33,6 +33,7 @@ function Multiworld:Connect(host, slot, password)
 
     ap:set_socket_disconnected_handler(function()
         print("Socket disconnected\n")
+        Message.EnqueueCustomMessage("Disconnected from Archipelago server!")
         Multiworld:Disconnect()
     end)
 
@@ -46,6 +47,7 @@ function Multiworld:Connect(host, slot, password)
     ap:set_slot_connected_handler(function(slot_data)
         ---@cast slot_data SlotData
         print("ConnectSlot success! (" .. slot_data.Version .. " | " .. slot_data.ServerVersion .. ")\n")
+        Message.EnqueueCustomMessage("Connected successfully!")
         if not SaveData:FileExists() then
             SaveData.IsCurrentFileRandomized = true
             SaveData.Seed = ap:get_seed()
@@ -62,6 +64,8 @@ function Multiworld:Connect(host, slot, password)
             SaveData.StoreItem = slot_data.StoreItem
             SaveData.StoreChip = slot_data.StoreChip
             SaveData.AllowSell = slot_data.AllowSell
+            SaveData.ShuffleVLog = slot_data.ShuffleVLog
+            SaveData.PlayerCount = slot_data.PlayerCount
             Multiworld.RequestStoreScouts()
             Util.DoRandomizerFirstTimeSetup()
             SaveData:Save()
@@ -78,6 +82,7 @@ function Multiworld:Connect(host, slot, password)
     --if ConnectSlot fails
     ap:set_slot_refused_handler(function(reasons)
         print("ConnectSlot refused: " .. table.concat(reasons, ", ") .. "\n")
+        Message.EnqueueCustomMessage("Connection failed. (" .. table.concat(reasons, ", ") .. ")")
         Multiworld:Disconnect()
     end)
 
@@ -88,11 +93,11 @@ function Multiworld:Connect(host, slot, password)
                 local ItemName = ap:get_item_name(item.item, nil)
                 local FromPlayer = ap:get_player_alias(item.player)
                 if Multiworld.CanGetItem then
-                    print("Item: " .. ItemName .. " (from " .. FromPlayer .. ")\n")
-                    Item.GetItem(ItemName)
+                    print("Item: " .. ItemName .. " " .. tostring(item.flags) .. " (from " .. FromPlayer .. ")\n")
+                    Item.GetItem(ItemName, FromPlayer, item.flags)
                 else
                     print("Can't get item right now! Adding to queue (" .. ItemName .. " from " .. FromPlayer .. ")\n")
-                    table.insert(ItemWaiting, ItemName)
+                    table.insert(ItemWaiting, {Name = ItemName, Player = FromPlayer, Flags = item.flags})
                 end
             end
         end
@@ -101,17 +106,35 @@ function Multiworld:Connect(host, slot, password)
     --when a location is scouted
     ap:set_location_info_handler(function (items)
         print("Locations scouted! " .. tostring(#items) .. "\n")
-        for _, Item in ipairs(items) do
-            ---@cast Item NetworkItem
-            local LocStr = Store.InvertLocationIdTable[Item.location]
-            if LocStr then
-                SaveData.Scouts[LocStr] = {
-                    ItemName = ap:get_item_name(Item.item, ap:get_player_game(Item.player)),
-                    PlayerName = ap:get_player_alias(Item.player),
-                    Flags = Item.flags
-                }
-            else
-                print("Couldn't find location string for scouted ID " .. Item.location .. "\n")
+        --print(Util.TableLength(SaveData.Scouts))
+        if Util.TableLength(SaveData.Scouts) == 0 then
+            for _, item in ipairs(items) do
+                ---@cast item NetworkItem
+                local LocStr = Store.InvertLocationIdTable[item.location]
+                if LocStr then
+                    SaveData.Scouts[LocStr] = {
+                        ItemName = ap:get_item_name(item.item, ap:get_player_game(item.player)),
+                        PlayerName = ap:get_player_alias(item.player),
+                        Flags = item.flags
+                    }
+                else
+                    print("Couldn't find location string for scouted ID " .. item.location .. "\n")
+                end
+            end
+        else
+            for _, item in ipairs(items) do
+                ---@cast item NetworkItem
+                local PlayerName = ap:get_player_alias(item.player)
+                local ItemName = ap:get_item_name(item.item, ap:get_player_game(item.player))
+                local ItemColor = Util.GetItemColorFromFlags(item.flags)
+                local LocName = ap:get_location_name(item.location, nil)
+                local Extra = Item.GetItemNameMessageExtra(ItemName)
+
+                if PlayerName == SaveData.Slot then
+                    Message.EnqueueCustomMessage("Got " .. Util.ColorText(ItemColor, ItemName).. "!" .. Extra .. " (" .. Util.ColorText(TextColors.Location, LocName) .. ")")
+                else
+                    Message.EnqueueCustomMessage("Sent " .. Util.ColorText(ItemColor, ItemName) .. " to " .. Util.ColorText(TextColors.PlayerOther, PlayerName .. "!") .. " (" .. Util.ColorText(TextColors.Location, LocName) .. ")")
+                end
             end
         end
     end)
@@ -153,8 +176,8 @@ function Multiworld:SetCanGetItem(bool)
         Multiworld.CanGetItem = true
 
         if #ItemWaiting > 0 then
-            for _, ItemName in ipairs(ItemWaiting) do
-                Item.GetItem(ItemName)
+            for _, item in ipairs(ItemWaiting) do
+                item.GetItem(item.Name, item.Player, item.Flags)
             end
             ItemWaiting = {}
         end
@@ -172,6 +195,9 @@ function Multiworld:CheckLocation(Location, Silent)
         Util.AddToTableIfNotHas(SaveData.Checked, Location)
         if not Silent then
             print("Checking location " .. Location .. " | " .. tostring(LocationIdTable[Location]) ..  "\n")
+            if ap then
+                ap:LocationScouts({LocationIdTable[Location]}, 0)
+            end
         end
     else
         print("No ID found for location \"" .. Location .. "\"\n")

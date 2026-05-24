@@ -154,6 +154,49 @@ function Inventory.GetVariableItemCount(InventoryItem)
     return ItemCount
 end
 
+---@param InventoryCategory integer
+---@param InventoryTag string
+---@return integer
+function Inventory.GetItemCount(InventoryCategory, InventoryTag)
+local Valid, PlayerCharacterManager = ObjectCache.FindPlayerCharacterManager()
+    if not Valid then
+        print("No HbkPlayerCharacterManager\n")
+        return 0
+    end
+    
+    ---@type TMap<EHbkInventoryCategory, FHbkPlayerInventoryItemList>
+    local SaveMap
+
+    if InventoryCategory == 1 --PlayerItem
+    or InventoryCategory == 2 then --VariableItem
+        SaveMap = PlayerCharacterManager.PlayerStateInfo.PlayerInventory.InventoryCategoryData.Map
+    elseif InventoryCategory == 3 --LatestVariableItem
+    or InventoryCategory == 5 then --LatestFileItem
+        SaveMap = PlayerCharacterManager.PlayerStateInfo.PlayerInventory.InventoryCategoryData_LatestSave.Map
+    else
+        print("This should never happen.\n")
+        return 0
+    end
+
+    ---@type int32
+    local ItemCount = 0
+
+    SaveMap:ForEach(function(OuterIndex, OuterElem)
+        if OuterIndex:get() == InventoryCategory then
+            OuterElem:get().List:ForEach(function(InnerIndex, InnerElem)
+                ---@type FHbkInventoryItem
+                local CurrentItem = InnerElem:get()
+
+                if CurrentItem.InventoryId.TagName:ToString() == InventoryTag then
+                    ItemCount = CurrentItem.Count
+                end
+            end)
+        end
+    end)
+
+    return ItemCount
+end
+
 function Inventory.SetItemObjectAmounts()
     if not Inventory.ShouldCheckForItemObjects then
         return
@@ -232,5 +275,32 @@ function Inventory.SetItemObjectAmounts()
         end
     end)
 end
+
+---@param VLogItem AHbkVLogItem
+---@return boolean
+function Inventory.ShouldChangeVLogItem(VLogItem)
+    local number = -1
+    for s in string.gmatch(VLogItem.VLogTag.TagName:ToString(), "%.(%d+)") do
+        number = tonumber(s)
+    end
+    return number >= 0 and number <= 710
+end
+
+NotifyOnNewObject("/Script/Hibiki.HbkVLogItem", function (NewObject)
+    ---@cast NewObject AHbkVLogItem
+    if SaveData.IsCurrentFileRandomized and SaveData.ShuffleVLog and Inventory.ShouldChangeVLogItem(NewObject) then
+        NewObject.VLogTag = {TagName = FName("None")}
+        print("Changed VLogTag of " .. NewObject:GetFName():ToString() .. " to None\n")
+    end
+end)
+
+NotifyOnNewObject("/Script/Hibiki.HbkVLogWidget", function (NewObject)
+    ---@cast NewObject UHbkVLogWidget
+    if SaveData.IsCurrentFileRandomized and SaveData.ShuffleVLog then
+        ExecuteInGameThreadWithDelay(33, function ()
+            NewObject:AcceptAction()
+        end)
+    end
+end)
 
 return Inventory

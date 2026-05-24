@@ -64,6 +64,12 @@ SaveData.StoreChip = false
 ---@type boolean
 SaveData.AllowSell = true
 
+---@type boolean
+SaveData.ShuffleVLog = false
+
+---@type integer
+SaveData.PlayerCount = 0
+
 ---@type table<string, ScoutedItem>
 SaveData.Scouts = {}
 
@@ -130,6 +136,12 @@ SaveDataDefault.StoreChip = false
 ---@type boolean
 SaveDataDefault.AllowSell = true
 
+---@type boolean
+SaveDataDefault.ShuffleVLog = false
+
+---@type integer
+SaveDataDefault.PlayerCount = 0
+
 ---@type table<string, ScoutedItem>
 SaveDataDefault.Scouts = {}
 
@@ -161,6 +173,8 @@ function SaveData:ResetToDefault()
     SaveData.StoreItem = SaveDataDefault.StoreItem
     SaveData.StoreChip = SaveDataDefault.StoreChip
     SaveData.AllowSell = SaveDataDefault.AllowSell
+    SaveData.ShuffleVLog = SaveDataDefault.ShuffleVLog
+    SaveData.PlayerCount = SaveDataDefault.PlayerCount
     SaveData.Scouts = SaveDataDefault.Scouts
     print("Current save data reset to default\n")
     SaveData.IsCurrentFileRandomized = false
@@ -209,6 +223,8 @@ function SaveData:Save(FileName)
                 StoreItem = SaveData.StoreItem,
                 StoreChip = SaveData.StoreChip,
                 AllowSell = SaveData.AllowSell,
+                ShuffleVLog = SaveData.ShuffleVLog,
+                PlayerCount = SaveData.PlayerCount,
                 Scouts = SaveData.Scouts
             }, { indent = true }))
             io.close(file)
@@ -239,7 +255,8 @@ function SaveData:Load(FileName)
     if file then
         local decode, pos, err = dkjson.decode(file:read("a"), 1, nil)
         if err then
-            print("Error while trying to load save data: " .. err)
+            Message.EnqueueCustomMessage("Error while trying to load save data: " .. err)
+            print("Error while trying to load save data: " .. err .. "\n")
         else
             SaveData.Seed = decode.Seed or SaveDataDefault.Seed
             SaveData.Version = decode.Version or SaveDataDefault.Version
@@ -261,6 +278,8 @@ function SaveData:Load(FileName)
             SaveData.StoreItem = decode.StoreItem or SaveDataDefault.StoreItem
             SaveData.StoreChip = decode.StoreChip or SaveDataDefault.StoreChip
             SaveData.AllowSell = decode.AllowSell or SaveDataDefault.AllowSell
+            SaveData.ShuffleVLog = decode.ShuffleVLog or SaveDataDefault.ShuffleVLog
+            SaveData.PlayerCount = decode.PlayerCount or SaveDataDefault.PlayerCount
             SaveData.Scouts = decode.Scouts or SaveDataDefault.Scouts
             print("File loaded from " .. path .. "\n")
             SaveData.IsCurrentFileRandomized = true
@@ -331,7 +350,9 @@ function SaveData:PrintAll()
     print("StoreSpecialAttack: " .. tostring(SaveData.StoreSpecialAttack) .. "\n")
     print("StoreItem: " .. tostring(SaveData.StoreItem) .. "\n")
     print("StoreChip: " .. tostring(SaveData.StoreChip) .. "\n")
+    print("PlayerCount: " .. tostring(SaveData.PlayerCount) .. "\n")
     print("AllowSell: " .. tostring(SaveData.AllowSell) .. "\n")
+    print("ShuffleVLog: " .. tostring(SaveData.ShuffleVLog) .. "\n")
 end
 
 ---@return string
@@ -347,6 +368,12 @@ end
 ---@return boolean
 function SaveData:IsLevelUnlocked(Level)
     return Util.TableContains(SaveData.UnlockedLevels, Level)
+end
+
+---@param Level integer
+---@return boolean
+function SaveData:IsLevelCompleted(Level)
+    return Util.TableContains(SaveData.CompletedLevels, Level)
 end
 
 ---@return boolean

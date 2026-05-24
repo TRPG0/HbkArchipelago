@@ -18,30 +18,46 @@ Util.LevelNameToShortName = {
     ["Level /Game/Hibiki/Maps/St12/St12_All.St12_All:PersistentLevel"] = "St12"
 }
 
----@type string
-local CurrentLevelName = ""
----@type string
-local CurrentLevelShortName = ""
+Util.PreviousLevelName = "?"
+Util.CurrentLevelName = "?"
 
+---@param color string
+---@param text string
 ---@return string
-function Util.GetCurrentLevelName()
-    local FullName = UEHelpers.GetPersistentLevel():GetFullName()
-    if CurrentLevelName == "" or CurrentLevelName ~= FullName then
-        CurrentLevelName = FullName
-        return CurrentLevelName
+function Util.ColorText(color, text)
+    return "<ttd fcl=\"#" .. color .. "ff\">" .. text .. "</>"
+end
+
+---@type number
+---@return string
+function Util.GetItemColorFromFlags(Flags)
+    local PROG = 1
+    local USEFUL = 2
+    local TRAP = 4
+
+    if Flags & PROG > 0 then
+        return TextColors.ItemProgression
+    elseif Flags & USEFUL > 0 then
+        return TextColors.ItemUseful
+    elseif Flags & TRAP > 0 then
+        return TextColors.ItemTrap
     else
-        return CurrentLevelName
+        return TextColors.ItemFiller
     end
+end
+
+function Util.UpdateCurrentLevelName()
+    Util.PreviousLevelName = Util.CurrentLevelName
+    Util.CurrentLevelName = UEHelpers.GetPersistentLevel():GetFullName()
 end
 
 ---@return string
 function Util.GetCurrentLevelShortName()
-    local ShortName = Util.LevelNameToShortName[CurrentLevelName]
+    local ShortName = Util.LevelNameToShortName[Util.CurrentLevelName]
     if ShortName then
-        CurrentLevelShortName = ShortName
-        return CurrentLevelShortName
+        return ShortName
     end
-    return CurrentLevelName
+    return Util.CurrentLevelName
 end
 
 ---@return boolean
@@ -65,7 +81,7 @@ end
 function Util.IsSaveGameSlotLoaded()
     local Valid, SaveGameManager = ObjectCache.FindSaveGameManager()
     if Valid then
-        return SaveGameManager:GetCurrentSlotName() ~= "" and Util.GetCurrentLevelName() ~= "Level /Game/Hibiki/Maps/Title/Title_All.Title_All:PersistentLevel"
+        return SaveGameManager:GetCurrentSlotName() ~= "" and Util.CurrentLevelName ~= "Level /Game/Hibiki/Maps/Title/Title_All.Title_All:PersistentLevel"
     else
         return false
     end
@@ -123,6 +139,16 @@ function Util.DoRandomizerFirstTimeSetup()
     if Valid2 then
         GameRuleManager:GotoHideOutDebug(UEHelpers.GetWorld(), true, 100, true, false)
     end
+end
+
+---@param Table table
+---@return integer
+function Util.TableLength(Table)
+    local length = 0
+    for k, v in pairs(Table) do
+        length = length + 1
+    end
+    return length
 end
 
 ---@param Table table

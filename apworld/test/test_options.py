@@ -174,7 +174,7 @@ class TestSpecialAttack(HbkTestBase):
 
 
 class TestNotStoreItem(HbkTestBase):
-    options = { "shuffle_store_items": False }
+    options = { "shuffle_store_items": "disabled" }
 
     def test_store_items(self) -> None:
         item_names = [i.name for i in self.multiworld.get_items()]
@@ -191,7 +191,7 @@ class TestNotStoreItem(HbkTestBase):
 
 
 class TestStoreItem(HbkTestBase):
-    options = { "shuffle_store_items": True }
+    options = { "shuffle_store_items": "enabled" }
 
     def test_store_items(self) -> None:
         item_names = [i.name for i in self.multiworld.get_items()]
@@ -205,6 +205,26 @@ class TestStoreItem(HbkTestBase):
 
         for location in store_locations:
             self.assertIn(location, location_names)
+
+
+class TestStoreItemExceptSPASlot(HbkTestBase):
+    options = { "shuffle_store_items": "enabled_except_special_attack_slot" }
+
+    def test_store_items(self) -> None:
+        item_names = [i.name for i in self.multiworld.get_items()]
+        location_names = [l.name for l in self.multiworld.get_locations()]
+
+        store_items = [i.name for i in item_list if i.item_type == HbkItemType.StoreItem]
+        store_locations = [l.name for l in location_list if l.loc_type == HbkLocationType.StoreItem]
+
+        for item in store_items:
+            self.assertIn(item, item_names)
+
+        for location in store_locations:
+            self.assertIn(location, location_names)
+
+        self.assertTrue(self.multiworld.get_location("Store - Items: Special Attack Slot Upgrade", self.player).item.name == "Special Attack Slot Upgrade")
+        self.assertEqual(sum([i.name == "Special Attack Slot Upgrade" for i in self.multiworld.get_items()]), 1)
 
 
 class TestNotChips(HbkTestBase):
@@ -238,4 +258,38 @@ class TestChips(HbkTestBase):
             self.assertIn(item, item_names)
 
         for location in chip_locations:
+            self.assertIn(location, location_names)
+
+
+class TestNotVLog(HbkTestBase):
+    options = { "shuffle_vlogs" : False }
+
+    def test_vlogs(self) -> None:
+        item_names = [i.name for i in self.multiworld.get_items()]
+        location_names = [l.name for l in self.multiworld.get_locations()]
+
+        vlog_items = [i.name for i in item_list if i.item_type == HbkItemType.VLog and i.count != 0]
+        vlog_locations = [l.name for l in location_list if l.loc_type == HbkLocationType.VLog]
+
+        for item in vlog_items:
+            self.assertNotIn(item, item_names)
+
+        for location in vlog_locations:
+            self.assertNotIn(location, location_names)
+
+
+class TestVLog(HbkTestBase):
+    options = { "shuffle_vlogs" : True }
+
+    def test_vlogs(self) -> None:
+        item_names = [i.name for i in self.multiworld.get_items()]
+        location_names = [l.name for l in self.multiworld.get_locations()]
+
+        vlog_items = [i.name for i in item_list if i.item_type == HbkItemType.VLog and i.count != 0]
+        vlog_locations = [l.name for l in location_list if l.loc_type == HbkLocationType.VLog]
+
+        for item in vlog_items:
+            self.assertIn(item, item_names)
+
+        for location in vlog_locations:
             self.assertIn(location, location_names)

@@ -44,8 +44,7 @@ class HiFiRushWorld(World):
             HbkLocationType.Partner,
             HbkLocationType.SPECTRA,
             HbkLocationType.SubMission,
-            HbkLocationType.NPCItem,
-            HbkLocationType.VLog
+            HbkLocationType.NPCItem
         ]
 
 
@@ -65,11 +64,14 @@ class HiFiRushWorld(World):
         if not self.options.shuffle_special_attacks:
             self.skipped_location_types.append(HbkLocationType.SpecialAttack)
 
-        if not self.options.shuffle_store_items:
+        if self.options.shuffle_store_items == "disabled":
             self.skipped_location_types.append(HbkLocationType.StoreItem)
 
         if not self.options.shuffle_chips:
             self.skipped_location_types.append(HbkLocationType.Chip)
+
+        if not self.options.shuffle_vlogs:
+            self.skipped_location_types.append(HbkLocationType.VLog)
 
 
     def set_rules(self):
@@ -94,8 +96,8 @@ class HiFiRushWorld(World):
         return HiFiRushItem(event, ItemClassification.progression_skip_balancing, None, self.player)
 
 
-    #def get_filler_item_name(self) -> str:
-    #    pass
+    def get_filler_item_name(self) -> str:
+        return "Gears x20,000"
 
 
     def create_items(self):
@@ -109,9 +111,10 @@ class HiFiRushWorld(World):
             or item.item_type == HbkItemType.AttackMacaron and not self.options.shuffle_macaron_attacks\
             or item.item_type == HbkItemType.AttackKorsica and not self.options.shuffle_korsica_attacks\
             or item.item_type == HbkItemType.SpecialAttack and not self.options.shuffle_special_attacks\
-            or item.item_type == HbkItemType.StoreItem and not self.options.shuffle_store_items\
+            or item.item_type == HbkItemType.StoreItem and self.options.shuffle_store_items == "disabled"\
+            or item.name == "Special Attack Slot Upgrade" and self.options.shuffle_store_items == "enabled_except_special_attack_slot"\
             or item.item_type == HbkItemType.Chip and not self.options.shuffle_chips\
-            or item.item_type == HbkItemType.VLog:
+            or item.item_type == HbkItemType.VLog and not self.options.shuffle_vlogs:
                 count = 0
 
             if count <= 0:
@@ -121,6 +124,11 @@ class HiFiRushWorld(World):
                     pool.append(self.create_item(item.name))
 
         self.multiworld.itempool += pool
+
+
+    def pre_fill(self):
+        if self.options.shuffle_store_items == "enabled_except_special_attack_slot":
+            self.get_location("Store - Items: Special Attack Slot Upgrade").place_locked_item(self.create_item("Special Attack Slot Upgrade"))
 
 
     def create_regions(self):
@@ -163,7 +171,8 @@ class HiFiRushWorld(World):
             "StoreSpecialAttack": bool(self.options.shuffle_special_attacks),
             "StoreItem": bool(self.options.shuffle_store_items),
             "StoreChip": bool(self.options.shuffle_chips),
-            "AllowSell": bool(self.options.allow_selling_in_store)
+            "AllowSell": bool(self.options.allow_selling_in_store),
+            "ShuffleVLog": bool(self.options.shuffle_vlogs)
         }
 
         self.export_location_json()

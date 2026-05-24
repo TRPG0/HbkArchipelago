@@ -718,6 +718,9 @@ class HbkRules:
                     and macaron(state)
                 ),
 
+            "Track 2: VLog \"HR Claim #324839028555180850195\"":
+                magnet,
+
             "Track 2: Rock Comic":
                 magnet,
 
@@ -745,6 +748,15 @@ class HbkRules:
                     and macaron(state)
                 ),
 
+            "Track 2: VLog \"Tram Line Issues\"":
+                magnet,
+
+            "Track 2: VLog \"Introducing \"The Arrow!\"\"":
+                lambda state: (
+                    magnet(state)
+                    and peppermint(state)
+                ),
+
             "Track 2: Broken Armstrong Circuit #5":
                 lambda state: (
                     magnet(state)
@@ -753,6 +765,12 @@ class HbkRules:
                 ),
 
             "Track 2: Life Gauge Piece #2":
+                lambda state: (
+                    magnet(state)
+                    and peppermint(state)
+                ),
+
+            "Track 2: VLog \"Behind the Showmanship: Sitdown with Rekka\"":
                 lambda state: (
                     magnet(state)
                     and peppermint(state)
@@ -785,6 +803,12 @@ class HbkRules:
                     and peppermint(state)
                 ),
 
+            "Track 3: VLog \"R&D Service Log: Part 2\"":
+                lambda state: (
+                    magnet(state)
+                    and peppermint(state)
+                ),
+
             "Track 3: Electric Reverb Core Piece #1":
                 lambda state: (
                     magnet(state)
@@ -792,7 +816,25 @@ class HbkRules:
                     and macaron(state)
                 ),
 
+            "Track 3: VLog \"R&D Service Log: Part 3\"":
+                lambda state: (
+                    magnet(state)
+                    and peppermint(state)
+                ),
+
             "Track 3: Life Gauge Piece #1":
+                lambda state: (
+                    magnet(state)
+                    and peppermint(state)
+                ),
+
+            "Track 3: VLog \"R&D Service Log: Part 4\"":
+                lambda state: (
+                    magnet(state)
+                    and peppermint(state)
+                ),
+
+            "Track 3: VLog \"Zanzo's Order Request\"":
                 lambda state: (
                     magnet(state)
                     and peppermint(state)
@@ -810,6 +852,24 @@ class HbkRules:
                     and peppermint(state)
                 ),
 
+            "Track 3: VLog \"LU-C1LLE Self-Therapy Journal\"":
+                lambda state: (
+                    magnet(state)
+                    and peppermint(state)
+                ),
+
+            "Track 3: VLog \"Barrier Technology Test Results\"":
+                lambda state: (
+                    magnet(state)
+                    and peppermint(state)
+                ),
+
+            "Track 3: VLog \"Punch-to-face Test Results\"":
+                lambda state: (
+                    magnet(state)
+                    and peppermint(state)
+                ),
+
             "Track 3: Electric Reverb Core Piece #2":
                 lambda state: (
                     magnet(state)
@@ -817,6 +877,20 @@ class HbkRules:
                 ),
 
             "Track 3: Broken Armstrong Circuit #6":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                ),
+
+            "Track 3: VLog \"Offensive Capabilities Test\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                ),
+
+            "Track 3: VLog \"Barrier Umbrella Test\"":
                 lambda state: (
                     magnet(state)
                     and parry(state)
@@ -837,6 +911,13 @@ class HbkRules:
                     and peppermint(state)
                 ),
 
+            "Track 3: VLog \"Test Lab Assistance Mail\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                ),
+
             "Track 3: Life Gauge Piece #3":
                 lambda state: (
                     magnet(state)
@@ -851,10 +932,25 @@ class HbkRules:
                     and peppermint(state)
                 ),
 
+            "Track 4: VLog \"Staffing Allocation Complaint\"":
+                macaron,
+
             "Track 4: Broken Armstrong Circuit #1":
                 macaron,
 
+            "Track 4: VLog \"Auto-Saved Private Message\"":
+                lambda state: (
+                    macaron(state)
+                    and peppermint(state)
+                ),
+
             "Track 4: Broken Armstrong Circuit #2":
+                lambda state: (
+                    macaron(state)
+                    and peppermint(state)
+                ),
+
+            "Track 4: VLog \"Disgruntled Decaf Revenge\"":
                 lambda state: (
                     macaron(state)
                     and peppermint(state)
@@ -909,6 +1005,14 @@ class HbkRules:
                     and parry(state)
                 ),
 
+            "Track 4: VLog \"Development Mindfulness Checklist\"":
+                lambda state: (
+                    macaron(state)
+                    and peppermint(state)
+                    and magnet(state)
+                    and parry(state)
+                ),
+
             "Track 4: Broken Piece of a Health Tank #2":
                 lambda state: (
                     macaron(state)
@@ -933,10 +1037,16 @@ class HbkRules:
                     and parry(state)
                 ),
 
+            "Track 5: VLog \"Annoyed by Korsica FWD\"":
+                parry,
+
             "Track 5: Broken Armstrong Circuit #1":
                 parry,
 
             "Track 5: Broken Armstrong Circuit #2":
+                parry,
+
+            "Track 5: VLog \"Musings About Data Node\"":
                 parry,
 
             "Track 5: Broken Armstrong Circuit #3":
@@ -945,8 +1055,20 @@ class HbkRules:
             "Track 5: Electric Reverb Core Piece #1":
                 parry,
 
+            "Track 5: VLog \"Poem by SCR-UB\"":
+                parry,
+
             "Track 5: Rock Comic":
                 parry,
+
+            "Track 5: VLog \"Vandelay Game Studios?\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
 
             "Track 5: Life Gauge Piece #2":
                 lambda state: (
@@ -982,6 +1104,14 @@ class HbkRules:
                     and korsica(state)
                 ),
 
+            "Track 5: VLog \"Regarding Wing 1 Layout Complaints\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                    and macaron(state)
+                ),
+
             "Track 5: Broken Armstrong Circuit #6":
                 lambda state: (
                     magnet(state)
@@ -998,7 +1128,21 @@ class HbkRules:
                     and macaron(state)
                 ),
 
+            "Track 5: VLog \"FWD: Data Node Advice\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                ),
+
             "Track 5: Broken Armstrong Circuit #8":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                ),
+
+            "Track 5: VLog \"Korsica Complaints\"":
                 lambda state: (
                     magnet(state)
                     and parry(state)
@@ -1016,6 +1160,12 @@ class HbkRules:
                 lambda state: (
                     parry(state)
                     and peppermint(state)
+                    and macaron(state)
+                ),
+
+            "Track 7: VLog \"Platform Construction Note\"":
+                lambda state: (
+                    parry(state)
                     and macaron(state)
                 ),
 
@@ -1081,6 +1231,14 @@ class HbkRules:
                     and macaron(state)
                 ),
 
+            "Track 7: VLog \"Too Many Rooms\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                    and macaron(state)
+                ),
+
             "Track 7: Life Gauge Piece #3":
                 lambda state: (
                     magnet(state)
@@ -1091,6 +1249,14 @@ class HbkRules:
                 ),
 
             "Track 7: Broken Armstrong Circuit #5":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                    and macaron(state)
+                ),
+
+            "Track 7: VLog \"Suspicious Doors?\"":
                 lambda state: (
                     magnet(state)
                     and parry(state)
@@ -1114,6 +1280,23 @@ class HbkRules:
                     and macaron(state)
                 ),
 
+            "Track 7: VLog \"Data Node Dissatisfaction Mail\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                    and macaron(state)
+                ),
+
+            "Track 7: VLog \"Pmidge Press Announcement\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
             "Track 7: Broken Armstrong Circuit #7":
                 lambda state: (
                     magnet(state)
@@ -1122,7 +1305,23 @@ class HbkRules:
                     and macaron(state)
                 ),
 
+            "Track 7: VLog \"Depressed Buttons\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                    and macaron(state)
+                ),
+
             "Track 7: Broken Armstrong Circuit #8":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                    and macaron(state)
+                ),
+
+            "Track 7: VLog \"Food Delivery Warning\"":
                 lambda state: (
                     magnet(state)
                     and parry(state)
@@ -1141,7 +1340,17 @@ class HbkRules:
             "Track 8: Broken Armstrong Circuit #2":
                 korsica,
 
+            "Track 8: VLog \"Charging\"":
+                korsica,
+
             "Track 8: Broken Piece of a Health Tank #1":
+                lambda state: (
+                    magnet(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
+            "Track 8: VLog \"Taking A Break In The Park\"":
                 lambda state: (
                     magnet(state)
                     and macaron(state)
@@ -1157,6 +1366,86 @@ class HbkRules:
                 ),
 
             "Track 8: Broken Armstrong Circuit #3":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
+            "Track 8: VLog \"SBR-001 Display\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
+            "Track 8: VLog \"GNR-020 Display\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
+            "Track 8: VLog \"ES-101 Display\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
+            "Track 8: VLog \"BES-102 Display\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
+            "Track 8: VLog \"BA-B00 Display\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
+            "Track 8: VLog \"BL-1Z5 Display\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
+            "Track 8: VLog \"Reminder to Reception\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
+            "Track 8: VLog \"BRUT-1L Display\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
+            "Track 8: VLog \"Our Community Helper: BA-B00\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
+            "Track 8: VLog \"SEN-C0 Display\"":
                 lambda state: (
                     magnet(state)
                     and parry(state)
@@ -1188,7 +1477,23 @@ class HbkRules:
                     and korsica(state)
                 ),
 
+            "Track 8: VLog \"Disappointed O5-KAR\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
             "Track 8: Broken Piece of a Health Tank #2":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
+            "Track 8: VLog \"Water Generator Complaint\"":
                 lambda state: (
                     magnet(state)
                     and parry(state)
@@ -1206,6 +1511,15 @@ class HbkRules:
                 ),
 
             "Track 8: Broken Armstrong Circuit #6":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
+            "Track 8: VLog \"Display Complaints\"":
                 lambda state: (
                     magnet(state)
                     and parry(state)
@@ -1232,6 +1546,24 @@ class HbkRules:
                     and korsica(state)
                 ),
 
+            "Track 8: VLog \"KEM-0N0 Display\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
+            "Track 8: VLog \"SBR Development Display\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
             "Track 8: Life Gauge Piece #3":
                 lambda state: (
                     magnet(state)
@@ -1242,6 +1574,15 @@ class HbkRules:
                 ),
 
             "Track 8: Broken Armstrong Circuit #8":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
+            "Track 8: VLog \"Door Musings from SCR-UB\"":
                 lambda state: (
                     magnet(state)
                     and parry(state)
@@ -1265,6 +1606,20 @@ class HbkRules:
                     and korsica(state)
                 ),
 
+            "Track 10: VLog \"Cafeteria Menu\"":
+                lambda state: (
+                    parry(state)
+                    and peppermint(state)
+                    and macaron(state)
+                ),
+
+            "Track 10: VLog \"Vandelay Grammar Check\"":
+                lambda state: (
+                    parry(state)
+                    and peppermint(state)
+                    and macaron(state)
+                ),
+
             "Track 10: Broken Armstrong Circuit #1":
                 lambda state: (
                     parry(state)
@@ -1280,6 +1635,15 @@ class HbkRules:
                 ),
 
             "Track 10: Broken Armstrong Circuit #2":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
+            "Track 10: VLog \"Atrium Statue Mail\"":
                 lambda state: (
                     magnet(state)
                     and parry(state)
@@ -1315,6 +1679,15 @@ class HbkRules:
                     and korsica(state)
                 ),
 
+            "Track 10: VLog \"Budget Challenge Mail\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
             "Track 10: Life Gauge Piece #3":
                 lambda state: (
                     magnet(state)
@@ -1333,6 +1706,15 @@ class HbkRules:
                     and korsica(state)
                 ),
 
+            "Track 10: VLog \"Hoodie Preorder Mail\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
             "Track 10: Broken Piece of a Health Tank":
                 lambda state: (
                     magnet(state)
@@ -1342,7 +1724,25 @@ class HbkRules:
                     and korsica(state)
                 ),
 
+            "Track 10: VLog \"Vandelay Handbook Note\"":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
             "Track 10: Electric Reverb Core Piece":
+                lambda state: (
+                    magnet(state)
+                    and parry(state)
+                    and peppermint(state)
+                    and macaron(state)
+                    and korsica(state)
+                ),
+
+            "Track 10: VLog \"Roquefort Meeting Prep\"":
                 lambda state: (
                     magnet(state)
                     and parry(state)

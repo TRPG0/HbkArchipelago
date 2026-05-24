@@ -107,6 +107,106 @@ local NameToInventoryTag = {
     ["High Risk, High Return"] = "Inventory.Chip.TakeAndGiveDamageUp"
 }
 
+Item.Attack1Text = "<tid id=\"Attack1\"/>"
+Item.Attack2Text = "<tid id=\"Attack2\"/>"
+Item.DodgeText = "<tid id=\"Dodge\"/>"
+Item.JumpText = "<tid id=\"Jump\"/>"
+Item.ParryText = "<tid id=\"Parry\"/>"
+Item.MagnetText = "<tid id=\"MoveAction\"/>"
+Item.MoveText = "<tid id=\"Gamepad_LeftStick\"/>"
+Item.PartnerText = "<tid id=\"PartnerRequest\"/>"
+Item.SkillInfoColor = "32cd32"
+Item.PeppermintColor = "88d8ea"
+Item.MacaronColor = "67f990"
+Item.KorsicaColor = "f563a1"
+Item.InAirText = Util.ColorText(Item.SkillInfoColor, "In air ")
+Item.ChargeText = Util.ColorText(Item.SkillInfoColor, "Hold ")
+Item.AfterParryText = Util.ColorText(Item.SkillInfoColor, "After parry, ")
+Item.JamGroundText = Util.ColorText(Item.SkillInfoColor, "Beat Hit on ground ")
+Item.JamAirText = Util.ColorText(Item.SkillInfoColor, "Beat Hit in air ")
+Item.RestText = "・"
+Item.CountColor = "ecbb12"
+
+---@type table<string, string>
+Item.ItemNameMessageExtra = {
+    ["Air Countdown"] = Item.InAirText .. Item.Attack1Text .. Item.Attack1Text .. Item.Attack1Text .. Item.Attack1Text,
+    ["Compressor Slam"] = Item.InAirText .. Item.Attack1Text .. Item.Attack2Text .. Item.Attack1Text .. Item.Attack2Text,
+    ["Harmonic Beam"] = Item.InAirText .. Item.Attack1Text .. Item.Attack2Text .. Item.Attack2Text .. Item.Attack2Text,
+    ["Hammer-On"] = Item.InAirText .. Item.Attack2Text,
+    ["Staccato Launch"] = Item.ChargeText .. Item.Attack1Text,
+    ["Gain Tornado"] = Item.ChargeText .. Item.Attack2Text,
+    ["Dash Attack"] = Item.DodgeText .. "+" .. Item.Attack1Text,
+    ["Air Launch"] = Item.DodgeText .. "+" .. Item.Attack2Text,
+    ["Quick Beat Hit"] = Item.Attack1Text .. "+" .. Item.JumpText,
+    ["Steal Counter"] = Item.AfterParryText .. Item.Attack2Text .. "+" .. Item.ParryText,
+    ["Rise Up"] = Item.Attack1Text .. Item.RestText .. Item.Attack1Text .. Item.Attack1Text,
+    ["Shred"] = Item.Attack1Text .. Item.Attack2Text .. Util.ColorText(Item.SkillInfoColor, " Mash ") .. Item.Attack2Text,
+    ["Tune Up"] = Item.Attack1Text .. Item.Attack1Text .. Item.RestText .. Item.Attack1Text .. Item.Attack1Text .. Item.Attack1Text,
+    ["Humbucker"] = Item.Attack1Text .. Item.Attack1Text .. Item.Attack1Text .. Item.Attack1Text,
+    ["Arpeggio Stab"] = Item.Attack1Text .. Item.Attack1Text .. Item.Attack2Text .. Item.Attack2Text .. Item.Attack2Text,
+    ["Echo Splash"] = Item.Attack1Text .. Item.Attack2Text .. Item.Attack1Text .. Item.Attack1Text .. Item.Attack1Text,
+    ["Breakdown"] = Item.Attack1Text .. Item.Attack2Text .. Item.Attack2Text,
+    ["Tremolo"] = Item.Attack2Text .. Item.Attack1Text .. Item.Attack1Text,
+    ["Stomp Box"] = Item.Attack2Text .. Item.Attack1Text .. Item.Attack2Text,
+    ["Pickup Crash"] = Item.Attack2Text .. Item.Attack2Text .. Item.Attack1Text,
+    ["Grandslam"] = Item.Attack2Text .. Item.Attack2Text .. Item.Attack2Text,
+    ["Magnet Backstab"] = Item.MagnetText .. Item.RestText .. Item.MagnetText,
+    ["Air Parry"] = Item.InAirText .. Item.ParryText,
+    ["Directional Parry"] = Item.MoveText .. "+" .. Item.ParryText,
+    ["Cannon Spike"] = Util.ColorText(Item.PeppermintColor, "Peppermint: ") .. Item.ChargeText .. Item.PartnerText,
+    ["Kick Shot"] = Util.ColorText(Item.PeppermintColor, "Peppermint: ") .. Item.AfterParryText .. Item.PartnerText,
+    ["Switch Kicker"] = Util.ColorText(Item.PeppermintColor, "Peppermint: ") .. Item.JamGroundText .. Item.PartnerText,
+    ["Master Blaster"] = Util.ColorText(Item.PeppermintColor, "Peppermint: ") .. Item.JamAirText .. Item.PartnerText,
+    ["Gravity Well"] = Util.ColorText(Item.MacaronColor, "Macaron: ") .. Item.ChargeText .. Item.PartnerText,
+    ["Love Tap"] = Util.ColorText(Item.MacaronColor, "Macaron: ") .. Item.AfterParryText .. Item.PartnerText,
+    ["Double Bass Drop"] = Util.ColorText(Item.MacaronColor, "Macaron: ") .. Item.JamGroundText .. Item.PartnerText,
+    ["High Strung"] = Util.ColorText(Item.MacaronColor, "Macaron: ") .. Item.JamAirText .. Item.PartnerText,
+    ["Korsica Typhoon"] = Util.ColorText(Item.KorsicaColor, "Korsica: ") .. Item.ChargeText .. Item.PartnerText,
+    ["High Alert"] = Util.ColorText(Item.KorsicaColor, "Korsica: ") .. Item.AfterParryText .. Item.PartnerText,
+    ["High Security Risk"] = Util.ColorText(Item.KorsicaColor, "Korsica: ") .. Item.JamGroundText .. Item.PartnerText,
+    ["Tornado Lift"] = Util.ColorText(Item.KorsicaColor, "Korsica: ") .. Item.JamAirText .. Item.PartnerText,
+}
+
+---@param ItemName string
+---@return string
+function Item.GetItemNameMessageExtra(ItemName)
+    local message = ""
+    if Item.ItemNameMessageExtra[ItemName] then
+        message =  " (" .. Item.ItemNameMessageExtra[ItemName] .. ")"
+    else
+        local InventoryTag = NameToInventoryTag[ItemName]
+        if InventoryTag then
+            if InventoryTag == "Inventory.Variable.Circuit" then
+                local CircuitCount = Inventory.GetItemCount(3, InventoryTag) + 1
+                message = " (Held: " .. Util.ColorText(Item.CountColor, tostring(CircuitCount)) .. ")"
+            elseif InventoryTag == "Inventory.Variable.LifeUpPiece" then
+                local LifeUpPieceCount = Inventory.GetItemCount(3, InventoryTag) + 1
+                message = " (" .. Util.ColorText(Item.CountColor, tostring(LifeUpPieceCount)) .. "/4)"
+            elseif InventoryTag == "Inventory.Variable.LifeTankPiece" then
+                local LifeTankPieceCount = Inventory.GetItemCount(3, InventoryTag) + 1
+                message = " (" .. Util.ColorText(Item.CountColor, tostring(LifeTankPieceCount)) .. "/5)"
+            elseif InventoryTag == "Inventory.Variable.GaugeUpPiece" then
+                local GaugeUpPieceCount = Inventory.GetItemCount(3, InventoryTag) + 1
+                message = " (" .. Util.ColorText(Item.CountColor, tostring(GaugeUpPieceCount)) .. "/4)"
+            elseif InventoryTag == "Inventory.Variable.ChipSlot" then
+                local ChipSlotCount = Inventory.GetItemCount(2, InventoryTag) + 1
+                message = " (" .. Util.ColorText(Item.CountColor, tostring(ChipSlotCount)) .. "/4)"
+            elseif string.find(InventoryTag, "Inventory.Chip.") then
+                --print("Item is a chip\n")
+                for ObjectPath, Info in pairs(Store.Chips) do
+                    local TagName = Info.InventoryTag.TagName:ToString()
+                    --print(TagName .. " " .. tostring(TagName == InventoryTag) .. "\n")
+                    if TagName == InventoryTag and Info.ScoutCount > 1 then
+                        local ChipCount = Inventory.GetItemCount(1, InventoryTag) + 1
+                        message = " (" .. Util.ColorText(Item.CountColor, tostring(ChipCount)) .. "/" .. tostring(Info.ScoutCount) .. ")"
+                    end
+                end
+            end
+        end
+    end
+    return message
+end
+
 ---@type table<int32, string>
 local VLogNumToInventoryTag = {
     [1] = "Inventory.File.VLog.0000",
@@ -322,7 +422,16 @@ function Item.AdjustPlayerStateInfo()
 end
 
 ---@param ItemName string
-function Item.GetItem(ItemName)
+---@param PlayerName string
+---@param Flags number
+function Item.GetItem(ItemName, PlayerName, Flags)
+    if PlayerName ~= SaveData.Slot then
+        local MessageExtra = Item.GetItemNameMessageExtra(ItemName)
+        local ItemColor = Util.GetItemColorFromFlags(Flags)
+        local FromPlayer = " from " .. Util.ColorText(TextColors.PlayerOther, PlayerName)
+        Message.EnqueueCustomMessage("Got " .. Util.ColorText(ItemColor, ItemName) .. FromPlayer .. "!" .. MessageExtra)
+    end
+
     if string.find(ItemName, "Track") then
         Item.GetTrackItem(ItemName)
         SaveData.Index = SaveData.Index + 1
@@ -331,6 +440,8 @@ function Item.GetItem(ItemName)
 
     if string.find(ItemName, "VLog") then
         Item.GetVLogItem(ItemName)
+        SaveData.Index = SaveData.Index + 1
+        return
     end
 
     if string.find(ItemName, "Gears") then
@@ -354,7 +465,10 @@ function Item.GetTrackItem(ItemName)
     if ItemName == "Unlock Next Track" then
         if SaveData.TrackOrderNormal then
             if #SaveData.UnlockedLevels < 12 then
-                table.insert(SaveData.UnlockedLevels, SaveData.UnlockedLevels[#SaveData.UnlockedLevels]+1)
+                ---@type integer
+                local level = SaveData.UnlockedLevels[#SaveData.UnlockedLevels]+1
+                table.insert(SaveData.UnlockedLevels, level)
+                Message.EnqueueCustomMessage("Unlocked Track " .. level .. "!")
             end
         end
     else
