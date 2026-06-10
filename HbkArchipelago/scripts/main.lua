@@ -1,5 +1,5 @@
 ---@type string
-HbkModVersion = "0.3.0"
+HbkModVersion = "0.3.1"
 print("HbkArchipelago " .. HbkModVersion .. "\n")
 
 dkjson = require "dkjson"

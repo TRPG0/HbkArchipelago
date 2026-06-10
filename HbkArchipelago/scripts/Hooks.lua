@@ -61,8 +61,13 @@ Hooks.Receive_OnPostStartPlayHook = {
         end
 
         if SaveData.IsCurrentFileRandomized then
-            if Util.GetCurrentLevelShortName() ~= "Hideout" and not Multiworld:IsConnected() then
-                Message.EnqueueCustomMessage("Not connected to an Archipelago server!")
+            if Util.GetCurrentLevelShortName() ~= "Hideout" then
+                if not Multiworld:IsConnected() then
+                    Message.EnqueueCustomMessage("Not connected to an Archipelago server!")
+                end
+                if not Multiworld.CanGetItem then
+                    Multiworld:SetCanGetItem(true)
+                end
             end
 
             if Stage.GotoHideOutIfLevelNotUnlocked() then
@@ -207,12 +212,31 @@ Hooks.RequestSaveGameHook = {
 Hooks.RequestAutoSaveGameHook = {
     Target = "/Script/Hibiki.HbkSaveGameBlueprintAsyncSaveGame:RequestAutoSaveGame",
     PreCallback = function(self, WorldContextObject, OverrideSpawnSpot)
-        print("RequestAutoSaveGame\n")
+        ---@type APlayerStart
+        local SpawnSpot = OverrideSpawnSpot:get()
+        print("RequestAutoSaveGame " .. SpawnSpot:GetFullName() .. "\n")
         if SaveData.IsCurrentFileRandomized then
+            if not Multiworld.CanGetItem then
+                Multiworld:SetCanGetItem(true)
+            end
+
             Inventory.SetItemObjectAmounts()
             SaveData:Save()
         end
-    end
+    end,
+    --[[PostCallback = function (self, WorldContextObject, OverrideSpawnSpot)
+        local Valid, SaveGameManager = ObjectCache.FindSaveGameManager()
+        if Valid then
+            local SpawnInfo = SaveGameManager.CachedSaveGameDataStageCheckpoint.SpawnInfo
+            local LevelName = SpawnInfo.LevelName:ToString()
+            local SpawnSpotName = SpawnInfo.SpawnSpotName:ToString()
+            if LevelName == "" and SpawnSpotName == "" then
+                print("No checkpoint currently saved\n")
+            else
+                print("Checkpoint: " .. LevelName .. " " .. SpawnSpotName .. "\n")
+            end
+        end
+    end]]
 }
 
 ---@type Hook

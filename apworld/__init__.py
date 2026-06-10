@@ -175,7 +175,7 @@ class HiFiRushWorld(World):
             "ShuffleVLog": bool(self.options.shuffle_vlogs)
         }
 
-        self.export_location_json()
+        #self.export_location_json()
 
         return slot_data
 

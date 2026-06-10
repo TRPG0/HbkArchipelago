@@ -45,6 +45,8 @@ NotifyOnNewObject("/Script/Hibiki.HbkStageSelectMenuWidget", function(NewObject)
     print("New StageSelect_UI!\n")
 
     if SaveData.IsCurrentFileRandomized then
+        Multiworld:SetCanGetItem(false)
+        Util.TryForceSave()
         LoopHandle = LoopInGameThreadAfterFrames(1, function()
             NewObject.LeftArrowButton.HoldDownDuration = 0.001
             NewObject.RightArrowButton.HoldDownDuration = 0.001
@@ -80,73 +82,74 @@ function Stage.GotoHideOutIfLevelNotUnlocked()
         return false
     end
 
-    if Util.GetCurrentLevelShortName() == "St01" then
+    local ShortName = Util.GetCurrentLevelShortName()
+    if ShortName == "St01" then
         if not Util.TableContains(SaveData.UnlockedLevels, 1) then
             print("Stage 1 is not unlocked! Returning to hideout\n")
             GameRuleManager:GotoHideOut(UEHelpers.GetWorld())
             return true
         end
-    elseif Util.GetCurrentLevelShortName() == "St02" then
+    elseif ShortName == "St02" then
         if not Util.TableContains(SaveData.UnlockedLevels, 2) then
             print("Stage 2 is not unlocked! Returning to hideout\n")
             GameRuleManager:GotoHideOut(UEHelpers.GetWorld())
             return true
         end
-    elseif Util.GetCurrentLevelShortName() == "St03" then
+    elseif ShortName == "St03" then
         if not Util.TableContains(SaveData.UnlockedLevels, 3) then
             print("Stage 3 is not unlocked! Returning to hideout\n")
             GameRuleManager:GotoHideOut(UEHelpers.GetWorld())
             return true
         end
-    elseif Util.GetCurrentLevelShortName() == "St04" then
+    elseif ShortName == "St04" then
         if not Util.TableContains(SaveData.UnlockedLevels, 4) then
             print("Stage 4 is not unlocked! Returning to hideout\n")
             GameRuleManager:GotoHideOut(UEHelpers.GetWorld())
             return true
         end
-    elseif Util.GetCurrentLevelShortName() == "St05" then
+    elseif ShortName == "St05" then
         if not Util.TableContains(SaveData.UnlockedLevels, 5) then
             print("Stage 5 is not unlocked! Returning to hideout\n")
             GameRuleManager:GotoHideOut(UEHelpers.GetWorld())
             return true
         end
-    elseif Util.GetCurrentLevelShortName() == "St05b" then
+    elseif ShortName == "St05b" then
         if not Util.TableContains(SaveData.UnlockedLevels, 6) then
             print("Stage 6 is not unlocked! Returning to hideout\n")
             GameRuleManager:GotoHideOut(UEHelpers.GetWorld())
             return true
         end
-    elseif Util.GetCurrentLevelShortName() == "St06" then
+    elseif ShortName == "St06" then
         if not Util.TableContains(SaveData.UnlockedLevels, 7) then
             print("Stage 7 is not unlocked! Returning to hideout\n")
             GameRuleManager:GotoHideOut(UEHelpers.GetWorld())
             return true
         end
-    elseif Util.GetCurrentLevelShortName() == "St07" then
+    elseif ShortName == "St07" then
         if not Util.TableContains(SaveData.UnlockedLevels, 8) then
             print("Stage 8 is not unlocked! Returning to hideout\n")
             GameRuleManager:GotoHideOut(UEHelpers.GetWorld())
             return true
         end
-    elseif Util.GetCurrentLevelShortName() == "St08" then
+    elseif ShortName == "St08" then
         if not Util.TableContains(SaveData.UnlockedLevels, 9) then
             print("Stage 9 is not unlocked! Returning to hideout\n")
             GameRuleManager:GotoHideOut(UEHelpers.GetWorld())
             return true
         end
-    elseif Util.GetCurrentLevelShortName() == "St10" then
+    elseif ShortName == "St10" then
         if not Util.TableContains(SaveData.UnlockedLevels, 10) then
             print("Stage 10 is not unlocked! Returning to hideout\n")
             GameRuleManager:GotoHideOut(UEHelpers.GetWorld())
             return true
         end
-    elseif Util.GetCurrentLevelShortName() == "St11" then
+    elseif ShortName == "St11" then
         if not Util.TableContains(SaveData.UnlockedLevels, 11) then
             print("Stage 11 is not unlocked! Returning to hideout\n")
             GameRuleManager:GotoHideOut(UEHelpers.GetWorld())
             return true
         end
-    elseif Util.GetCurrentLevelShortName() == "St12" then
+    elseif ShortName == "St12" then
         if not Util.TableContains(SaveData.UnlockedLevels, 12) then
             print("Stage 12 is not unlocked! Returning to hideout\n")
             GameRuleManager:GotoHideOut(UEHelpers.GetWorld())

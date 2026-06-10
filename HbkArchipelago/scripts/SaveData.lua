@@ -335,14 +335,8 @@ function SaveData:PrintAll()
     for _, str in ipairs(SaveData.Checked) do
         print(str .. "\n")
     end
-    print("Completed Levels:\n")
-    for _, num in ipairs(SaveData.CompletedLevels) do
-        print(num .. "\n")
-    end
-    print("Unlocked Levels:\n")
-    for _, num in ipairs(SaveData.UnlockedLevels) do
-        print(num .. "\n")
-    end
+    print("Completed Levels: " .. table.concat(SaveData.CompletedLevels, ", ") .. "\n")
+    print("Unlocked Levels: " .. table.concat(SaveData.UnlockedLevels, ", ") .. "\n")
     print("StoreAttackChai: " .. tostring(SaveData.StoreAttackChai) .. "\n")
     print("StoreAttackPeppermint: " .. tostring(SaveData.StoreAttackPeppermint) .. "\n")
     print("StoreAttackMacaron: " .. tostring(SaveData.StoreAttackMacaron) .. "\n")

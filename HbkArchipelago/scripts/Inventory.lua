@@ -294,13 +294,4 @@ NotifyOnNewObject("/Script/Hibiki.HbkVLogItem", function (NewObject)
     end
 end)
 
-NotifyOnNewObject("/Script/Hibiki.HbkVLogWidget", function (NewObject)
-    ---@cast NewObject UHbkVLogWidget
-    if SaveData.IsCurrentFileRandomized and SaveData.ShuffleVLog then
-        ExecuteInGameThreadWithDelay(33, function ()
-            NewObject:AcceptAction()
-        end)
-    end
-end)
-
 return Inventory

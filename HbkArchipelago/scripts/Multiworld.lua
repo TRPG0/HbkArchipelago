@@ -4,7 +4,7 @@ Multiworld = {}
 local LocWaiting = {}
 
 ---@type boolean
-Multiworld.CanGetItem = true
+Multiworld.CanGetItem = false
 
 ---@type table<table>
 local ItemWaiting = {}
@@ -69,6 +69,8 @@ function Multiworld:Connect(host, slot, password)
             Multiworld.RequestStoreScouts()
             Util.DoRandomizerFirstTimeSetup()
             SaveData:Save()
+        else
+            Multiworld:SetCanGetItem(true)
         end
         if HbkModVersion ~= slot_data.Version then
             print("Versions do not match! (" .. HbkModVersion .. " ~= " ..  slot_data.Version .. ")\n")
@@ -160,6 +162,7 @@ function Multiworld:Connect(host, slot, password)
 end
 
 function Multiworld:Disconnect()
+    Multiworld:SetCanGetItem(false)
     ap = nil
     collectgarbage("collect")
     print("Disconnected from Archipelago server.\n")
@@ -174,15 +177,17 @@ end
 function Multiworld:SetCanGetItem(bool)
     if bool then
         Multiworld.CanGetItem = true
+        print("Set can get item to true!\n")
 
         if #ItemWaiting > 0 then
             for _, item in ipairs(ItemWaiting) do
-                item.GetItem(item.Name, item.Player, item.Flags)
+                Item.GetItem(item.Name, item.Player, item.Flags)
             end
             ItemWaiting = {}
         end
     else
         Multiworld.CanGetItem = false
+        print("Set can get item to false!\n")
     end
 end
 
@@ -213,7 +218,7 @@ end
 ---@param SequenceName string
 ---@param LevelNum int32
 function Multiworld:LevelCompleted(SequenceName, LevelNum)
-    Multiworld:CheckLocation(SequenceName)
+    Multiworld:CheckLocation(SequenceName, Util.TableContains(SaveData.Checked, SequenceName))
     Util.AddToTableIfNotHas(SaveData.CompletedLevels, LevelNum)
     print("Track " .. tostring(LevelNum) .. " completed!\n")
     if SaveData:IsAllLevelsCompleted() then

@@ -62,19 +62,36 @@ end
 
 ---@return boolean
 function Util.LevelHasItemObjects()
-    if Util.GetCurrentLevelShortName() == "St01"
-    or Util.GetCurrentLevelShortName() == "St02"
-    or Util.GetCurrentLevelShortName() == "St03"
-    or Util.GetCurrentLevelShortName() == "St04"
-    or Util.GetCurrentLevelShortName() == "St05"
-    or Util.GetCurrentLevelShortName() == "St05b"
-    or Util.GetCurrentLevelShortName() == "St06"
-    or Util.GetCurrentLevelShortName() == "St07"
-    or Util.GetCurrentLevelShortName() == "St08"
-    or Util.GetCurrentLevelShortName() == "St10" then
+    local ShortName = Util.GetCurrentLevelShortName()
+    if ShortName == "St01"
+    or ShortName == "St02"
+    or ShortName == "St03"
+    or ShortName == "St04"
+    or ShortName == "St05"
+    or ShortName == "St05b"
+    or ShortName == "St06"
+    or ShortName == "St07"
+    or ShortName == "St08"
+    or ShortName == "St10" then
         return true
     end
     return false
+end
+
+function Util.TryForceSave()
+    local ShortName = Util.GetCurrentLevelShortName()
+    if ShortName == "Hideout" then
+        ---@type UHbkSaveGameBlueprintAsyncSaveGame | UObject
+        local SaveGameBP = StaticFindObject("/Script/Hibiki.Default__HbkSaveGameBlueprintAsyncSaveGame")
+
+        ---@type AHbkPlayerStart | UObject
+        local Checkpoint = StaticFindObject("/Game/Hibiki/Maps/HideOut/GD/GD_HO_Main.GD_HO_Main:PersistentLevel.HbkCheckPoint_2")
+        if SaveGameBP:IsValid() and Checkpoint:IsValid() then
+            SaveGameBP:RequestAutoSaveGame(UEHelpers.GetWorld(), Checkpoint)
+        end
+    else
+        print("Couldn't force save!\n")
+    end
 end
 
 ---@return boolean

@@ -299,7 +299,7 @@ location_list: List[HbkLocation] = [
     HbkLocation("Track 7: VLog \"Depressed Buttons\"", Regions.t7, HbkLocationType.VLog, "VLog0400_BP_2"),
     HbkLocation("Track 7: Graffiti #3 (Lasers)", Regions.t7, HbkLocationType.Graffiti, ""),
     HbkLocation("Track 7: Broken Armstrong Circuit #8", Regions.t7, HbkLocationType.Collectible, "St06/CircuitItem_BP8"),
-    HbkLocation("Track 7: VLog \"Food Delivery Warning\"", Regions.t7, HbkLocationType.VLog, "VLog_0410_BP_2"),
+    HbkLocation("Track 7: VLog \"Food Delivery Warning\"", Regions.t7, HbkLocationType.VLog, "VLog0410_BP_2"),
     HbkLocation("Track 7: Completed", Regions.t7, HbkLocationType.TrackComplete, "cs0625_00"),
 
     HbkLocation("Track 8: VLog \"Armstrong Festival Marketing?\"", Regions.t8, HbkLocationType.VLog, "VLog0430_BP_2"),
